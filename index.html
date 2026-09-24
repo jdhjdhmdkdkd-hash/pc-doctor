@@ -1,534 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PC Doctor | PC Diagnostic Tool</title>
-
-<meta name="description"
-content="PC Doctor - Free PC diagnostic, hardware information, FPS calculator, bottleneck checker and troubleshooting tools.">
+<title>PC Doctor | Scan • Diagnose • Optimize</title>
 
 <style>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-html{
-    scroll-behavior:smooth;
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
 }
 
-body{
-    background:#080b12;
-    color:white;
+header {
+    background: #111827;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-
-/* HEADER */
-
-header{
-    padding:20px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid #202938;
-    position:sticky;
-    top:0;
-    background:#080b12ee;
-    backdrop-filter:blur(10px);
-    z-index:1000;
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #60a5fa;
 }
 
-.logo{
-    font-size:25px;
-    font-weight:bold;
+nav a {
+    color: #d1d5db;
+    text-decoration: none;
+    margin-left: 20px;
 }
 
-.logo span{
-    color:#00d4ff;
+nav a:hover {
+    color: #60a5fa;
 }
 
-nav{
-    display:flex;
-    gap:25px;
+.hero {
+    text-align: center;
+    padding: 80px 20px;
 }
 
-nav a{
-    color:#aaa;
-    text-decoration:none;
-    transition:.3s;
+.hero h1 {
+    font-size: 55px;
+    margin-bottom: 15px;
 }
 
-nav a:hover{
-    color:#00d4ff;
+.hero h1 span {
+    color: #60a5fa;
 }
 
-
-/* HERO */
-
-.hero{
-    min-height:65vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:70px 20px;
+.hero p {
+    color: #94a3b8;
+    font-size: 18px;
+    margin-bottom: 30px;
 }
 
-.hero-content{
-    max-width:800px;
+.btn {
+    padding: 15px 30px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.badge{
-    display:inline-block;
-    color:#00d4ff;
-    border:1px solid #00d4ff;
-    padding:8px 16px;
-    border-radius:30px;
-    margin-bottom:20px;
+.btn:hover {
+    transform: scale(1.03);
 }
 
-h1{
-    font-size:58px;
-    margin-bottom:20px;
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
 }
 
-h1 span{
-    color:#00d4ff;
+.section {
+    margin-bottom: 70px;
 }
 
-.hero p{
-    color:#9aa4b2;
-    font-size:18px;
-    line-height:1.7;
-    margin-bottom:30px;
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-
-/* BUTTON */
-
-.btn{
-    background:#00d4ff;
-    color:#001018;
-    padding:15px 28px;
-    border-radius:8px;
-    border:none;
-    cursor:pointer;
-    font-size:16px;
-    font-weight:bold;
-    transition:.3s;
+.section-title h2 {
+    font-size: 32px;
 }
 
-.btn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 0 25px #00d4ff55;
+.section-title p {
+    color: #94a3b8;
+    margin-top: 8px;
 }
 
-
-/* SECTIONS */
-
-.section{
-    padding:70px 8%;
-    background:#0c1018;
+.card {
+    background: #1e293b;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
 }
 
-.section:nth-child(even){
-    background:#080b12;
+.progress-container {
+    background: #1e293b;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 18px;
+    margin-top: 20px;
 }
 
-.section h2{
-    text-align:center;
-    font-size:35px;
-    margin-bottom:40px;
+.progress {
+    width: 0%;
+    height: 100%;
+    background: #2563eb;
+    transition: width 0.4s;
 }
 
-
-/* TOOL BOX */
-
-.tool-box{
-    max-width:1050px;
-    margin:auto;
-    background:#111722;
-    border:1px solid #202938;
-    border-radius:16px;
-    padding:30px;
+.scan-text {
+    text-align: center;
+    margin-top: 15px;
+    color: #94a3b8;
 }
 
-
-/* GRID */
-
-.grid{
-    display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
-    gap:16px;
+.results {
+    display: none;
 }
 
-.form-grid{
-    display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
+.final-score {
+    text-align: center;
+    margin: 30px 0;
 }
 
-
-/* CARDS */
-
-.card{
-    background:#080b12;
-    border:1px solid #202938;
-    border-radius:12px;
-    padding:22px;
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-4px);
-    border-color:#00d4ff;
-}
-
-.card h3{
-    color:#00d4ff;
-    font-size:16px;
-    margin-bottom:12px;
-}
-
-.card p{
-    color:#aaa;
-    line-height:1.6;
-    word-break:break-word;
-}
-
-
-/* SCANNER */
-
-.progress-area{
-    display:none;
-    margin-bottom:30px;
-}
-
-.progress-text{
-    text-align:center;
-    color:#00d4ff;
-    margin-bottom:10px;
-}
-
-.progress{
-    width:100%;
-    height:8px;
-    background:#202938;
-    border-radius:10px;
-    overflow:hidden;
-}
-
-.progress-bar{
-    width:0%;
-    height:100%;
-    background:#00d4ff;
-    transition:width .3s;
-}
-
-.results{
-    display:none;
-}
-
-
-/* SCORE */
-
-.final-score{
-    text-align:center;
-    background:#080b12;
-    border:1px solid #202938;
-    border-radius:18px;
-    padding:35px;
-    margin-bottom:30px;
-}
-
-.score-circle{
-    width:190px;
-    height:190px;
-    margin:0 auto 20px;
-    border-radius:50%;
-
-    background:
-    conic-gradient(
-        #00d4ff 0deg,
-        #202938 0deg
+.score-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: conic-gradient(
+        #22c55e 0deg,
+        #22c55e 0deg,
+        #1e293b 0deg
     );
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    position:relative;
+    position: relative;
 }
 
-.score-circle::before{
-    content:"";
-    position:absolute;
-    width:150px;
-    height:150px;
-    background:#080b12;
-    border-radius:50%;
+.score-circle::after {
+    content: "";
+    width: 145px;
+    height: 145px;
+    background: #0f172a;
+    border-radius: 50%;
+    position: absolute;
 }
 
-.score-number{
-    position:relative;
-    font-size:42px;
-    font-weight:bold;
-    color:#00d4ff;
+.score-number {
+    z-index: 2;
+    font-size: 38px;
+    font-weight: bold;
 }
 
-.score-number small{
-    font-size:18px;
-    color:#8d98a8;
+.score-title {
+    margin-top: 15px;
+    color: #94a3b8;
 }
 
-.score-title{
-    color:#00d4ff;
-    font-size:21px;
-    font-weight:bold;
+.score-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
 }
 
-
-/* COMPONENT SCORES */
-
-.score-card{
-    background:#080b12;
-    border:1px solid #202938;
-    border-radius:14px;
-    padding:22px;
+.score-card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 15px;
 }
 
-.score-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:14px;
+.score-card h3 {
+    margin-bottom: 10px;
 }
 
-.score-header h3{
-    color:#ddd;
-    font-size:17px;
+.score-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #60a5fa;
 }
 
-.score-value{
-    color:#00d4ff;
-    font-size:22px;
-    font-weight:bold;
+.bar-bg {
+    height: 10px;
+    background: #334155;
+    border-radius: 10px;
+    margin-top: 15px;
+    overflow: hidden;
 }
 
-.score-bar{
-    height:10px;
-    background:#202938;
-    border-radius:20px;
-    overflow:hidden;
+.bar {
+    width: 0%;
+    height: 100%;
+    background: #2563eb;
+    transition: width 1s;
 }
 
-.score-fill{
-    width:0%;
-    height:100%;
-    background:#00d4ff;
-    border-radius:20px;
-    transition:width 1s ease;
+.status {
+    display: block;
+    margin-top: 10px;
+    color: #94a3b8;
+    font-size: 13px;
 }
 
-.score-status{
-    margin-top:12px;
-    color:#9aa4b2;
-    font-size:14px;
+.hardware-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
 }
 
-
-/* RECOMMENDATIONS */
-
-.recommendations{
-    margin-top:30px;
-    background:#080b12;
-    border:1px solid #202938;
-    border-radius:14px;
-    padding:25px;
+.hardware-item {
+    background: #1e293b;
+    padding: 18px;
+    border-radius: 12px;
 }
 
-.recommendations h3{
-    color:#00d4ff;
-    margin-bottom:18px;
+.hardware-item strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #60a5fa;
 }
 
-.recommendation{
-    padding:14px;
-    margin-bottom:10px;
-    background:#111722;
-    border-radius:8px;
-    color:#ddd;
-    line-height:1.6;
+.recommendations {
+    background: #1e293b;
+    border-radius: 15px;
+    padding: 25px;
+    line-height: 1.8;
 }
 
-.recommendation:last-child{
-    margin-bottom:0;
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
-
-/* HEALTH */
-
-.health{
-    margin-top:25px;
-    text-align:center;
-    padding:25px;
-    border-radius:12px;
-    background:#080b12;
-    border:1px solid #202938;
+.tool-card {
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 15px;
 }
 
-.health h3{
-    color:#00d4ff;
-    margin-bottom:10px;
+.tool-card h3 {
+    margin-bottom: 10px;
 }
 
-.health p{
-    color:#aaa;
+.tool-card p {
+    color: #94a3b8;
 }
 
-
-/* FORM */
-
-label{
-    display:block;
-    color:#9aa4b2;
-    margin-bottom:8px;
+select,
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    background: #0f172a;
+    color: white;
+    border: 1px solid #334155;
+    border-radius: 8px;
 }
 
-select{
-    width:100%;
-    padding:13px;
-    background:#080b12;
-    color:white;
-    border:1px solid #303a4d;
-    border-radius:8px;
-    outline:none;
+.result-box {
+    margin-top: 20px;
+    background: #0f172a;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
 }
 
-select:focus{
-    border-color:#00d4ff;
+.connect-pc {
+    text-align: center;
+    margin: 30px 0;
 }
 
-.calculate{
-    width:100%;
-    margin-top:25px;
+.connect-pc button {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-
-/* RESULT */
-
-.result{
-    margin-top:25px;
-    padding:25px;
-    background:#080b12;
-    border-radius:12px;
-    text-align:center;
-    border:1px solid #202938;
+#connectionStatus {
+    margin-top: 12px;
+    color: #94a3b8;
 }
 
-.result h3{
-    color:#00d4ff;
-    margin-bottom:12px;
+#livePCData {
+    display: none;
+    margin-top: 20px;
+    padding: 25px;
+    border-radius: 15px;
+    background: #111827;
 }
 
-.result p{
-    color:#ddd;
-    line-height:1.7;
+.pc-data-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 15px;
 }
 
-
-/* FOOTER */
-
-footer{
-    padding:30px;
-    text-align:center;
-    color:#6f7886;
-    border-top:1px solid #202938;
+.pc-data-grid div {
+    padding: 15px;
+    border-radius: 10px;
+    background: #1f2937;
 }
 
+.pc-data-grid strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #60a5fa;
+}
 
-/* MOBILE */
+.pc-data-grid span {
+    font-size: 20px;
+    font-weight: bold;
+}
 
-@media(max-width:700px){
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #111827;
+    color: #64748b;
+}
 
-    header{
-        padding:18px 5%;
+@media(max-width: 800px) {
+
+    .score-grid,
+    .hardware-grid,
+    .tool-grid {
+        grid-template-columns: 1fr;
     }
 
-    nav{
-        display:none;
+    nav {
+        display: none;
     }
 
-    h1{
-        font-size:40px;
+    .hero h1 {
+        font-size: 40px;
     }
-
-    .hero{
-        min-height:60vh;
-    }
-
-    .tool-box{
-        padding:20px;
-    }
-
-    .score-circle{
-        width:160px;
-        height:160px;
-    }
-
-    .score-circle::before{
-        width:125px;
-        height:125px;
-    }
-
 }
 
 </style>
-
 </head>
 
-
 <body>
-
-
-<!-- HEADER -->
 
 <header>
 
 <div class="logo">
-PC<span>Doctor</span>
+PC Doctor
 </div>
 
 <nav>
-
-<a href="#">
-Home
-</a>
-
-<a href="#scanner">
-Health Scanner
-</a>
-
-<a href="#fps">
-FPS Calculator
-</a>
-
-<a href="#bottleneck">
-Bottleneck
-</a>
-
-<a href="#troubleshooter">
-Troubleshooter
-</a>
-
+<a href="#home">Home</a>
+<a href="#scanner">Health Scanner</a>
+<a href="#fps">FPS Calculator</a>
+<a href="#bottleneck">Bottleneck</a>
+<a href="#troubleshooter">Troubleshooter</a>
 </nav>
 
 </header>
@@ -536,111 +389,123 @@ Troubleshooter
 
 <!-- HERO -->
 
-<section class="hero">
-
-<div class="hero-content">
-
-<div class="badge">
-⚡ Free PC Diagnostic Tools
-</div>
+<section class="hero" id="home">
 
 <h1>
-Check Your PC's <span>Health</span>
+Your PC's <span>Doctor</span>
 </h1>
 
 <p>
-Analyze your PC hardware, calculate performance,
-check system health and find solutions to common
-PC problems.
+Scan • Diagnose • Optimize
 </p>
 
-<button
-class="btn"
-onclick="startScan()">
-
-🔍 Start PC Diagnostic
-
+<button class="btn" onclick="startScan()">
+🩺 Scan My PC
 </button>
-
-</div>
 
 </section>
 
 
-<!-- PC HEALTH SCANNER -->
+<div class="container">
+
+
+<!-- HEALTH SCANNER -->
 
 <section class="section" id="scanner">
 
-<h2>
-🩺 PC Health Scanner
-</h2>
+<div class="section-title">
 
-<div class="tool-box">
+<h2>🩺 PC Health Scanner</h2>
 
-<button
-class="btn calculate"
-onclick="startScan()">
+<p>
+Analyze your PC performance
+</p>
 
-🚀 Start Full PC Scan
+</div>
 
+
+<div class="card">
+
+<button class="btn" onclick="startScan()">
+Start Health Scan
 </button>
 
+<div class="progress-container">
 
-<div
-class="progress-area"
-id="progressArea">
-
-<div
-class="progress-text"
-id="progressText">
-
-Preparing scan...
+<div class="progress" id="scanProgress"></div>
 
 </div>
 
-<div class="progress">
-
-<div
-class="progress-bar"
-id="progressBar">
-</div>
-
+<div class="scan-text" id="scanText">
+Ready to scan
 </div>
 
 </div>
 
 
-<div
-class="results"
-id="results">
+<!-- CONNECT PC -->
+
+<div class="connect-pc">
+
+<button onclick="connectPC()">
+🖥️ Connect My PC
+</button>
+
+<p id="connectionStatus">
+PC not connected
+</p>
+
+</div>
 
 
-<!-- FINAL SCORE -->
+<div id="livePCData">
+
+<h3>🟢 Live PC Data</h3>
+
+<div class="pc-data-grid">
+
+<div>
+<strong>CPU</strong>
+<span id="webCPU">--%</span>
+</div>
+
+<div>
+<strong>RAM</strong>
+<span id="webRAM">--%</span>
+</div>
+
+<div>
+<strong>Storage</strong>
+<span id="webStorage">--%</span>
+</div>
+
+<div>
+<strong>Operating System</strong>
+<span id="webOS">--</span>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- RESULTS -->
+
+<div class="results" id="results">
+
 
 <div class="final-score">
 
-<div
-class="score-circle"
-id="finalScoreCircle">
+<div class="score-circle" id="finalScoreCircle">
 
-<div
-class="score-number"
-id="finalScore">
-
+<div class="score-number" id="finalScore">
 0
-
-<small>/100</small>
-
 </div>
 
 </div>
 
-<div
-class="score-title"
-id="scoreTitle">
-
-Analyzing PC Health...
-
+<div class="score-title" id="scoreTitle">
+PC Health Score
 </div>
 
 </div>
@@ -648,306 +513,151 @@ Analyzing PC Health...
 
 <!-- COMPONENT SCORES -->
 
-<div class="grid">
+<div class="score-grid">
 
 
 <div class="score-card">
 
-<div class="score-header">
+<h3>🧠 CPU</h3>
 
-<h3>
-🧠 CPU Score
-</h3>
-
-<div
-class="score-value"
-id="cpuScore">
-
-0/100
-
+<div class="score-value" id="cpuScore">
+0
 </div>
 
+<div class="bar-bg">
+<div class="bar" id="cpuBar"></div>
 </div>
 
-<div class="score-bar">
-
-<div
-class="score-fill"
-id="cpuBar">
-</div>
-
-</div>
-
-<div
-class="score-status"
-id="cpuStatus">
-
-Analyzing...
-
-</div>
+<span class="status" id="cpuStatus">
+Checking...
+</span>
 
 </div>
 
 
 <div class="score-card">
 
-<div class="score-header">
+<h3>🧮 RAM</h3>
 
-<h3>
-💾 RAM Score
-</h3>
-
-<div
-class="score-value"
-id="ramScore">
-
-0/100
-
+<div class="score-value" id="ramScore">
+0
 </div>
 
+<div class="bar-bg">
+<div class="bar" id="ramBar"></div>
 </div>
 
-<div class="score-bar">
-
-<div
-class="score-fill"
-id="ramBar">
-</div>
-
-</div>
-
-<div
-class="score-status"
-id="ramStatus">
-
-Analyzing...
-
-</div>
+<span class="status" id="ramStatus">
+Checking...
+</span>
 
 </div>
 
 
 <div class="score-card">
 
-<div class="score-header">
+<h3>🎮 GPU</h3>
 
-<h3>
-🎮 GPU Score
-</h3>
-
-<div
-class="score-value"
-id="gpuScore">
-
-0/100
-
+<div class="score-value" id="gpuScore">
+0
 </div>
 
+<div class="bar-bg">
+<div class="bar" id="gpuBar"></div>
 </div>
 
-<div class="score-bar">
-
-<div
-class="score-fill"
-id="gpuBar">
-</div>
-
-</div>
-
-<div
-class="score-status"
-id="gpuStatus">
-
-Analyzing...
-
-</div>
+<span class="status" id="gpuStatus">
+Checking...
+</span>
 
 </div>
 
 
 <div class="score-card">
 
-<div class="score-header">
+<h3>💾 Storage</h3>
 
-<h3>
-💿 Storage Score
-</h3>
+<div class="score-value" id="storageScore">
+0
+</div>
 
-<div
-class="score-value"
-id="storageScore">
+<div class="bar-bg">
+<div class="bar" id="storageBar"></div>
+</div>
 
-0/100
+<span class="status" id="storageStatus">
+Checking...
+</span>
 
 </div>
 
 </div>
 
-<div class="score-bar">
 
-<div
-class="score-fill"
-id="storageBar">
-</div>
-
-</div>
-
-<div
-class="score-status"
-id="storageStatus">
-
-Analyzing...
-
-</div>
-
-</div>
-
-</div>
+<br>
 
 
 <!-- HARDWARE INFO -->
 
+<div class="card">
+
+<h2>🔧 Hardware Information</h2>
+
 <br>
 
-<h2 style="font-size:25px;margin-bottom:25px;">
+<div class="hardware-grid">
 
-🖥️ Hardware Information
-
-</h2>
-
-
-<div class="grid">
-
-
-<div class="card">
-
-<h3>
-🧠 CPU
-</h3>
-
-<p id="cpuInfo">
--
-</p>
-
+<div class="hardware-item">
+<strong>CPU</strong>
+<span id="cpuInfo">-</span>
 </div>
 
-
-<div class="card">
-
-<h3>
-💾 RAM
-</h3>
-
-<p id="memory">
--
-</p>
-
+<div class="hardware-item">
+<strong>RAM</strong>
+<span id="memory">-</span>
 </div>
 
-
-<div class="card">
-
-<h3>
-🎮 GPU
-</h3>
-
-<p id="gpuInfo">
--
-</p>
-
+<div class="hardware-item">
+<strong>GPU</strong>
+<span id="gpuInfo">-</span>
 </div>
 
-
-<div class="card">
-
-<h3>
-💻 Operating System
-</h3>
-
-<p id="platform">
--
-</p>
-
+<div class="hardware-item">
+<strong>Operating System</strong>
+<span id="platform">-</span>
 </div>
 
-
-<div class="card">
-
-<h3>
-🌐 Browser
-</h3>
-
-<p id="browser">
--
-</p>
-
+<div class="hardware-item">
+<strong>Browser</strong>
+<span id="browser">-</span>
 </div>
 
-
-<div class="card">
-
-<h3>
-🖥️ Screen
-</h3>
-
-<p id="screen">
--
-</p>
-
+<div class="hardware-item">
+<strong>Screen</strong>
+<span id="screen">-</span>
 </div>
 
-
-<div class="card">
-
-<h3>
-🌍 Language
-</h3>
-
-<p id="language">
--
-</p>
-
+<div class="hardware-item">
+<strong>Language</strong>
+<span id="language">-</span>
 </div>
 
-
-<div class="card">
-
-<h3>
-📱 Device
-</h3>
-
-<p id="device">
--
-</p>
-
+<div class="hardware-item">
+<strong>Device</strong>
+<span id="device">-</span>
 </div>
 
-
-<div class="card">
-
-<h3>
-🔋 Battery
-</h3>
-
-<p id="battery">
-Checking...
-</p>
-
+<div class="hardware-item">
+<strong>Battery</strong>
+<span id="battery">-</span>
 </div>
 
-
-<div class="card">
-
-<h3>
-⚙️ CPU Threads
-</h3>
-
-<p id="threads">
--
-</p>
-
+<div class="hardware-item">
+<strong>CPU Threads</strong>
+<span id="threads">-</span>
 </div>
 
+</div>
 
 </div>
 
@@ -956,33 +666,16 @@ Checking...
 
 <div class="recommendations">
 
-<h3>
-💡 PC Doctor Recommendations
-</h3>
+<h2>💡 Recommendations</h2>
+
+<br>
 
 <div id="recommendations">
-
-Analyzing your PC...
-
+Run a scan to get recommendations.
 </div>
 
 </div>
 
-
-<div class="health">
-
-<h3>
-🩺 Scan Status
-</h3>
-
-<p id="healthText">
-Analysis pending...
-</p>
-
-</div>
-
-
-</div>
 
 </div>
 
@@ -993,168 +686,74 @@ Analysis pending...
 
 <section class="section" id="fps">
 
-<h2>
-🎮 FPS Calculator
-</h2>
+<div class="section-title">
 
-<div class="tool-box">
-
-
-<div class="form-grid">
-
-
-<div>
-
-<label>
-Game
-</label>
-
-<select id="game">
-
-<option value="100">
-Free Fire
-</option>
-
-<option value="90">
-GTA V
-</option>
-
-<option value="75">
-PUBG
-</option>
-
-<option value="65">
-Fortnite
-</option>
-
-<option value="55">
-Red Dead Redemption 2
-</option>
-
-<option value="50">
-Cyberpunk 2077
-</option>
-
-</select>
-
-</div>
-
-
-<div>
-
-<label>
-GPU
-</label>
-
-<select id="gpu">
-
-<option value="1.5">
-RTX 4090
-</option>
-
-<option value="1.3">
-RTX 4080
-</option>
-
-<option value="1.15">
-RTX 4070
-</option>
-
-<option value="1">
-RTX 3060
-</option>
-
-<option value="0.75">
-GTX 1660
-</option>
-
-<option value="0.55">
-GTX 1050 Ti
-</option>
-
-</select>
-
-</div>
-
-
-<div>
-
-<label>
-CPU
-</label>
-
-<select id="cpu">
-
-<option value="1.2">
-Core i9 / Ryzen 9
-</option>
-
-<option value="1.1">
-Core i7 / Ryzen 7
-</option>
-
-<option value="1">
-Core i5 / Ryzen 5
-</option>
-
-<option value="0.8">
-Core i3 / Ryzen 3
-</option>
-
-</select>
-
-</div>
-
-
-<div>
-
-<label>
-Resolution
-</label>
-
-<select id="resolution">
-
-<option value="1">
-1080p
-</option>
-
-<option value="0.75">
-1440p
-</option>
-
-<option value="0.55">
-4K
-</option>
-
-</select>
-
-</div>
-
-</div>
-
-
-<button
-class="btn calculate"
-onclick="calculateFPS()">
-
-🚀 Calculate FPS
-
-</button>
-
-
-<div
-class="result"
-id="fpsResult">
-
-<h3>
-Estimated FPS
-</h3>
+<h2>🎮 FPS Calculator</h2>
 
 <p>
-Select your hardware and calculate.
+Estimate gaming FPS
 </p>
 
 </div>
+
+<div class="card">
+
+<label>Game</label>
+
+<select id="game">
+
+<option>Free Fire</option>
+<option>GTA V</option>
+<option>PUBG</option>
+<option>Fortnite</option>
+<option>Red Dead Redemption 2</option>
+<option>Cyberpunk 2077</option>
+
+</select>
+
+
+<label>GPU</label>
+
+<select id="fpsGPU">
+
+<option>RTX 4090</option>
+<option>RTX 4080</option>
+<option>RTX 4070</option>
+<option>RTX 3060</option>
+<option>GTX 1660</option>
+<option>GTX 1050 Ti</option>
+
+</select>
+
+
+<label>CPU</label>
+
+<select id="fpsCPU">
+
+<option>Core i9 / Ryzen 9</option>
+<option>Core i7 / Ryzen 7</option>
+<option>Core i5 / Ryzen 5</option>
+<option>Core i3 / Ryzen 3</option>
+
+</select>
+
+
+<label>Resolution</label>
+
+<select id="resolution">
+
+<option>1080p</option>
+<option>1440p</option>
+<option>4K</option>
+
+</select>
+
+
+<button class="btn" onclick="calculateFPS()">
+Calculate FPS
+</button>
+
+<div class="result-box" id="fpsResult"></div>
 
 </div>
 
@@ -1163,94 +762,47 @@ Select your hardware and calculate.
 
 <!-- BOTTLENECK -->
 
-<section
-class="section"
-id="bottleneck">
+<section class="section" id="bottleneck">
 
-<h2>
-⚙️ Bottleneck Checker
-</h2>
+<div class="section-title">
 
-<div class="tool-box">
-
-
-<div class="form-grid">
-
-
-<div>
-
-<label>
-CPU Power
-</label>
-
-<select id="cpuPower">
-
-<option value="100">
-High-End CPU
-</option>
-
-<option value="75">
-Mid-Range CPU
-</option>
-
-<option value="50">
-Entry-Level CPU
-</option>
-
-</select>
-
-</div>
-
-
-<div>
-
-<label>
-GPU Power
-</label>
-
-<select id="gpuPower">
-
-<option value="100">
-High-End GPU
-</option>
-
-<option value="75">
-Mid-Range GPU
-</option>
-
-<option value="50">
-Entry-Level GPU
-</option>
-
-</select>
-
-</div>
-
-</div>
-
-
-<button
-class="btn calculate"
-onclick="checkBottleneck()">
-
-🔍 Check Bottleneck
-
-</button>
-
-
-<div
-class="result"
-id="bottleneckResult">
-
-<h3>
-Bottleneck Result
-</h3>
+<h2>⚙️ Bottleneck Checker</h2>
 
 <p>
-Select CPU and GPU level.
+Check CPU and GPU balance
 </p>
 
 </div>
+
+<div class="card">
+
+<label>CPU Power</label>
+
+<select id="bCPU">
+
+<option value="100">High-End</option>
+<option value="70">Mid-Range</option>
+<option value="45">Entry-Level</option>
+
+</select>
+
+
+<label>GPU Power</label>
+
+<select id="bGPU">
+
+<option value="100">High-End</option>
+<option value="70">Mid-Range</option>
+<option value="45">Entry-Level</option>
+
+</select>
+
+
+<button class="btn" onclick="checkBottleneck()">
+Check Bottleneck
+</button>
+
+<div class="result-box" id="bottleneckResult"></div>
 
 </div>
 
@@ -1259,104 +811,82 @@ Select CPU and GPU level.
 
 <!-- TROUBLESHOOTER -->
 
-<section
-class="section"
-id="troubleshooter">
+<section class="section" id="troubleshooter">
 
-<h2>
-🛠️ PC Troubleshooter
-</h2>
+<div class="section-title">
 
-<div class="tool-box">
-
-
-<div class="grid">
-
-
-<div class="card">
-
-<h3>
-🐌 PC Slow
-</h3>
+<h2>🛠️ PC Troubleshooter</h2>
 
 <p>
-Close unnecessary background apps,
-restart your PC and check available
-storage space.
+Quick solutions for common PC problems
+</p>
+
+</div>
+
+<div class="tool-grid">
+
+<div class="tool-card">
+
+<h3>🐌 Slow PC</h3>
+
+<p>
+Close unnecessary background apps, remove startup programs and free disk space.
 </p>
 
 </div>
 
 
-<div class="card">
+<div class="tool-card">
 
-<h3>
-🎮 Game Lag
-</h3>
+<h3>🔥 High Temperature</h3>
 
 <p>
-Update your GPU driver, lower graphics
-settings and check CPU/GPU usage.
+Clean dust, improve airflow and check CPU/GPU cooling.
 </p>
 
 </div>
 
 
-<div class="card">
+<div class="tool-card">
 
-<h3>
-🌡️ High Temperature
-</h3>
+<h3>🎮 Low FPS</h3>
 
 <p>
-Clean dust from the PC, check airflow
-and make sure cooling is working correctly.
+Update GPU drivers, lower graphics settings and check background processes.
 </p>
 
 </div>
 
 
-<div class="card">
+<div class="tool-card">
 
-<h3>
-🖥️ No Display
-</h3>
+<h3>💾 Low Storage</h3>
 
 <p>
-Check monitor cable, GPU connection,
-RAM seating and monitor input source.
+Remove unnecessary files and temporary data.
 </p>
 
 </div>
 
 
-<div class="card">
+<div class="tool-card">
 
-<h3>
-💾 Storage Full
-</h3>
+<h3>🧠 High RAM Usage</h3>
 
 <p>
-Remove unnecessary files and keep
-sufficient free space.
+Close unused applications and browser tabs.
 </p>
 
 </div>
 
 
-<div class="card">
+<div class="tool-card">
 
-<h3>
-🔵 Blue Screen
-</h3>
+<h3>⚡ Startup Slow</h3>
 
 <p>
-Update drivers and Windows and check
-recently installed hardware or software.
+Disable unnecessary startup applications from Windows Task Manager.
 </p>
-
-</div>
-
 
 </div>
 
@@ -1364,254 +894,108 @@ recently installed hardware or software.
 
 </section>
 
+</div>
 
-<!-- FOOTER -->
 
 <footer>
 
-© 2026 PC Doctor. All rights reserved.
+PC Doctor © 2026  
+<br>
+Scan • Diagnose • Optimize
 
 </footer>
 
 
 <script>
 
-
 /* =========================
-   START SCAN
+   HEALTH SCANNER
 ========================= */
 
-function startScan(){
+function startScan() {
 
-    document
-    .getElementById("scanner")
-    .scrollIntoView({
-        behavior:"smooth"
+    document.getElementById("scanner").scrollIntoView({
+        behavior: "smooth"
     });
 
+    const progress =
+        document.getElementById("scanProgress");
 
-    const progressArea =
-        document.getElementById(
-            "progressArea"
-        );
-
-    const progressBar =
-        document.getElementById(
-            "progressBar"
-        );
-
-    const progressText =
-        document.getElementById(
-            "progressText"
-        );
+    const text =
+        document.getElementById("scanText");
 
     const results =
-        document.getElementById(
-            "results"
-        );
+        document.getElementById("results");
 
+    results.style.display = "none";
 
-    progressArea.style.display =
-        "block";
+    let value = 0;
 
-    results.style.display =
-        "none";
-
-    progressBar.style.width =
-        "0%";
-
-
-    let progress=0;
-
-
-    const messages=[
-
+    const messages = [
         "Checking CPU...",
-
         "Analyzing RAM...",
-
         "Detecting GPU...",
-
         "Checking storage...",
-
         "Checking operating system...",
-
-        "Checking battery...",
-
-        "Calculating component scores..."
-
+        "Checking browser...",
+        "Calculating scores..."
     ];
 
+    let index = 0;
 
-    const interval =
-        setInterval(()=>{
+    const timer = setInterval(() => {
 
-            progress += 15;
+        value += 15;
 
-            if(progress>100){
-                progress=100;
-            }
+        if (value > 100)
+            value = 100;
 
+        progress.style.width = value + "%";
 
-            progressBar.style.width =
-                progress+"%";
+        if (messages[index]) {
+            text.textContent = messages[index];
+        }
 
+        index++;
 
-            const index =
-                Math.min(
-                    Math.floor(progress/15),
-                    messages.length-1
-                );
+        if (value >= 100) {
 
+            clearInterval(timer);
 
-            progressText.innerText =
-                messages[index];
+            text.textContent =
+                "Scan completed!";
 
+            showResults();
+        }
 
-            if(progress>=100){
-
-                clearInterval(interval);
-
-                setTimeout(
-                    showResults,
-                    500
-                );
-
-            }
-
-        },350);
-
+    }, 350);
 }
 
 
-/* =========================
-   SHOW RESULTS
-========================= */
+function showResults() {
 
-async function showResults(){
-
-    const nav=navigator;
+    document.getElementById("results")
+        .style.display = "block";
 
 
-    /* CPU */
-
-    const cpuThreads =
-        nav.hardwareConcurrency || 0;
-
-
-    document.getElementById(
-        "cpuInfo"
-    ).innerText =
-        cpuThreads
-        ?
-        cpuThreads +
-        " logical threads"
-        :
-        "Not available";
-
-
-    document.getElementById(
-        "threads"
-    ).innerText =
-        cpuThreads
-        ?
-        cpuThreads +
-        " logical threads"
-        :
-        "Not available";
-
-
-    /* RAM */
+    const threads =
+        navigator.hardwareConcurrency || 4;
 
     const ram =
-        nav.deviceMemory || 0;
+        navigator.deviceMemory || 8;
 
-
-    document.getElementById(
-        "memory"
-    ).innerText =
-        ram
-        ?
-        ram +
-        " GB (approx.)"
-        :
-        "Not available";
-
-
-    /* GPU */
-
-    document.getElementById(
-        "gpuInfo"
-    ).innerText =
+    const gpu =
         getGPUInfo();
 
 
-    /* OS */
-
-    document.getElementById(
-        "platform"
-    ).innerText =
-        getOperatingSystem();
-
-
-    /* BROWSER */
-
-    document.getElementById(
-        "browser"
-    ).innerText =
-        getBrowser();
-
-
-    /* SCREEN */
-
-    document.getElementById(
-        "screen"
-    ).innerText =
-        screen.width +
-        " × " +
-        screen.height;
-
-
-    /* LANGUAGE */
-
-    document.getElementById(
-        "language"
-    ).innerText =
-        nav.language ||
-        "Not available";
-
-
-    /* DEVICE */
-
-    document.getElementById(
-        "device"
-    ).innerText =
-        detectDevice();
-
-
-    /* BATTERY */
-
-    checkBattery();
-
-
-    /* CALCULATE SCORES */
-
     const cpuScore =
-        calculateCPUScore(
-            cpuThreads
-        );
-
+        calculateCPUScore(threads);
 
     const ramScore =
-        calculateRAMScore(
-            ram
-        );
-
+        calculateRAMScore(ram);
 
     const gpuScore =
-        calculateGPUScore()
-        ;
-
+        calculateGPUScore(gpu);
 
     const storageScore =
         calculateStorageScore();
@@ -1627,8 +1011,6 @@ async function showResults(){
             ) / 4
         );
 
-
-    /* UPDATE COMPONENT SCORES */
 
     updateComponentScore(
         "cpu",
@@ -1651,14 +1033,56 @@ async function showResults(){
     );
 
 
-    /* FINAL SCORE */
-
-    updateFinalScore(
-        finalScore
-    );
+    updateFinalScore(finalScore);
 
 
-    /* RECOMMENDATIONS */
+    document.getElementById("cpuInfo")
+        .textContent =
+        threads + " logical threads";
+
+
+    document.getElementById("memory")
+        .textContent =
+        ram + " GB (approx.)";
+
+
+    document.getElementById("gpuInfo")
+        .textContent =
+        gpu;
+
+
+    document.getElementById("platform")
+        .textContent =
+        getOperatingSystem();
+
+
+    document.getElementById("browser")
+        .textContent =
+        getBrowser();
+
+
+    document.getElementById("screen")
+        .textContent =
+        screen.width + " × " + screen.height;
+
+
+    document.getElementById("language")
+        .textContent =
+        navigator.language;
+
+
+    document.getElementById("device")
+        .textContent =
+        detectDevice();
+
+
+    document.getElementById("threads")
+        .textContent =
+        threads;
+
+
+    checkBattery();
+
 
     generateRecommendations(
         cpuScore,
@@ -1666,403 +1090,237 @@ async function showResults(){
         gpuScore,
         storageScore
     );
-
-
-    document.getElementById(
-        "healthText"
-    ).innerText =
-        "✅ Scan completed. Review your component scores and recommendations.";
-
-
-    results.style.display =
-        "block";
-
 }
 
 
-/* =========================
-   CPU SCORE
-========================= */
+function calculateCPUScore(threads) {
 
-function calculateCPUScore(threads){
-
-    if(!threads)
-        return 50;
-
-
-    if(threads>=24)
-        return 100;
-
-
-    if(threads>=16)
-        return 95;
-
-
-    if(threads>=12)
-        return 90;
-
-
-    if(threads>=8)
-        return 82;
-
-
-    if(threads>=6)
-        return 72;
-
-
-    if(threads>=4)
-        return 60;
-
+    if (threads >= 24) return 100;
+    if (threads >= 16) return 95;
+    if (threads >= 12) return 90;
+    if (threads >= 8) return 82;
+    if (threads >= 6) return 72;
+    if (threads >= 4) return 60;
 
     return 45;
-
 }
 
 
-/* =========================
-   RAM SCORE
-========================= */
+function calculateRAMScore(ram) {
 
-function calculateRAMScore(ram){
-
-    if(!ram)
-        return 50;
-
-
-    if(ram>=32)
-        return 100;
-
-
-    if(ram>=16)
-        return 95;
-
-
-    if(ram>=12)
-        return 88;
-
-
-    if(ram>=8)
-        return 80;
-
-
-    if(ram>=4)
-        return 60;
-
+    if (ram >= 32) return 100;
+    if (ram >= 16) return 95;
+    if (ram >= 12) return 88;
+    if (ram >= 8) return 80;
+    if (ram >= 4) return 60;
 
     return 40;
-
 }
 
 
-/* =========================
-   GPU SCORE
-========================= */
+function calculateGPUScore(gpu) {
 
-function calculateGPUScore(){
+    gpu = gpu.toLowerCase();
 
-    const gpu =
-        getGPUInfo().toLowerCase();
-
-
-    if(
+    if (
         gpu.includes("4090") ||
         gpu.includes("4080") ||
         gpu.includes("7900")
-    ){
-        return 100;
-    }
+    ) return 100;
 
-
-    if(
+    if (
         gpu.includes("4070") ||
         gpu.includes("3080") ||
         gpu.includes("3090") ||
         gpu.includes("7800")
-    ){
-        return 92;
-    }
+    ) return 92;
 
-
-    if(
+    if (
         gpu.includes("3070") ||
         gpu.includes("4060") ||
         gpu.includes("3060") ||
         gpu.includes("7600")
-    ){
-        return 82;
-    }
+    ) return 82;
 
-
-    if(
+    if (
         gpu.includes("1660") ||
         gpu.includes("2060") ||
         gpu.includes("3050")
-    ){
-        return 72;
-    }
+    ) return 72;
 
-
-    if(
+    if (
         gpu.includes("1050") ||
         gpu.includes("1650")
-    ){
-        return 60;
-    }
+    ) return 60;
 
-
-    if(
+    if (
         gpu.includes("intel") ||
         gpu.includes("uhd") ||
         gpu.includes("vega")
-    ){
-        return 55;
-    }
-
+    ) return 55;
 
     return 65;
-
 }
 
 
-/* =========================
-   STORAGE SCORE
-========================= */
+function calculateStorageScore() {
 
-function calculateStorageScore(){
-
-    /*
-       Browser cannot reliably read
-       SSD/HDD health or SMART data.
-
-       Therefore this is a neutral
-       estimated score.
-    */
-
-    if(
+    if (
         navigator.storage &&
         navigator.storage.estimate
-    ){
-
+    ) {
         return 75;
-
     }
 
     return 70;
-
 }
 
-
-/* =========================
-   COMPONENT SCORE UPDATE
-========================= */
 
 function updateComponentScore(
     type,
     score
-){
+) {
 
     document.getElementById(
-        type+"Score"
-    ).innerText =
+        type + "Score"
+    ).textContent =
         score + "/100";
 
-
     document.getElementById(
-        type+"Bar"
+        type + "Bar"
     ).style.width =
-        score+"%";
-
+        score + "%";
 
     document.getElementById(
-        type+"Status"
-    ).innerText =
+        type + "Status"
+    );
+
+    const status =
         getScoreStatus(score);
 
+    document.getElementById(
+        type + "Status"
+    ).textContent =
+        status;
 }
 
 
-/* =========================
-   SCORE STATUS
-========================= */
+function getScoreStatus(score) {
 
-function getScoreStatus(score){
-
-    if(score>=85)
+    if (score >= 85)
         return "🟢 Excellent";
 
-
-    if(score>=70)
+    if (score >= 70)
         return "🟡 Good";
 
-
-    if(score>=50)
+    if (score >= 50)
         return "🟠 Needs Attention";
 
-
     return "🔴 Critical";
-
 }
 
 
-/* =========================
-   FINAL SCORE
-========================= */
+function updateFinalScore(score) {
 
-function updateFinalScore(score){
-
-    const number =
-        document.getElementById(
-            "finalScore"
-        );
+    document.getElementById(
+        "finalScore"
+    ).textContent =
+        score;
 
 
-    const circle =
-        document.getElementById(
-            "finalScoreCircle"
-        );
-
-
-    const title =
-        document.getElementById(
-            "scoreTitle"
-        );
-
-
-    number.innerHTML =
-        score +
-        "<small>/100</small>";
-
-
-    const degrees =
-        (score/100)*360;
-
-
-    circle.style.background =
-        `conic-gradient(
-            #00d4ff ${degrees}deg,
-            #202938 ${degrees}deg
-        )`;
-
-
-    title.innerText =
+    document.getElementById(
+        "scoreTitle"
+    ).textContent =
         getScoreStatus(score) +
         " PC Health";
 
+
+    const degrees =
+        score * 3.6;
+
+
+    document.getElementById(
+        "finalScoreCircle"
+    ).style.background =
+        `conic-gradient(
+            #22c55e 0deg,
+            #22c55e ${degrees}deg,
+            #1e293b ${degrees}deg
+        )`;
 }
 
-
-/* =========================
-   RECOMMENDATIONS
-========================= */
 
 function generateRecommendations(
     cpu,
     ram,
     gpu,
     storage
-){
+) {
 
-    const box =
-        document.getElementById(
-            "recommendations"
+    let recommendations = [];
+
+
+    if (cpu < 70) {
+
+        recommendations.push(
+            "🧠 CPU: Your CPU score is relatively low. Close unnecessary background apps."
         );
-
-
-    let list=[];
-
-
-    if(cpu<70){
-
-        list.push(
-            "🧠 Your CPU score is relatively low. Close unnecessary background applications and consider a CPU upgrade for demanding workloads."
-        );
-
     }
 
 
-    if(ram<70){
+    if (ram < 70) {
 
-        list.push(
-            "💾 Your RAM score is low. More RAM may improve multitasking and some gaming workloads."
+        recommendations.push(
+            "🧮 RAM: More RAM may help with multitasking and some workloads."
         );
-
     }
 
 
-    if(gpu<70){
+    if (gpu < 70) {
 
-        list.push(
-            "🎮 Your GPU score is relatively low. Lower graphics settings in demanding games or consider a GPU upgrade."
+        recommendations.push(
+            "🎮 GPU: Consider lowering game graphics settings for better FPS."
         );
-
     }
 
 
-    if(storage<70){
+    if (storage < 70) {
 
-        list.push(
-            "💿 Storage needs attention. Free up unnecessary files and check your drive health using a dedicated SMART/storage diagnostic tool."
+        recommendations.push(
+            "💾 Storage: Free unnecessary files and keep enough free space."
         );
-
     }
 
 
-    if(list.length===0){
+    if (recommendations.length === 0) {
 
-        list.push(
-            "✅ Your detected system indicators look good. Keep Windows, drivers and important software updated."
+        recommendations.push(
+            "✅ Your browser-based PC check looks good. Keep Windows and drivers updated."
         );
-
-        list.push(
-            "🛡️ Keep enough free storage space and maintain good PC airflow."
-        );
-
-        list.push(
-            "🎮 For gaming, keep your GPU drivers updated and monitor temperatures."
-        );
-
     }
 
 
-    box.innerHTML =
-        list.map(
-            item =>
-            `<div class="recommendation">
-                ${item}
-            </div>`
-        ).join("");
-
+    document.getElementById(
+        "recommendations"
+    ).innerHTML =
+        recommendations.join("<br><br>");
 }
 
 
-/* =========================
-   GPU INFORMATION
-========================= */
+function getGPUInfo() {
 
-function getGPUInfo(){
-
-    try{
+    try {
 
         const canvas =
-            document.createElement(
-                "canvas"
-            );
-
+            document.createElement("canvas");
 
         const gl =
-            canvas.getContext(
-                "webgl"
-            ) ||
-            canvas.getContext(
-                "experimental-webgl"
-            );
+            canvas.getContext("webgl") ||
+            canvas.getContext("experimental-webgl");
 
 
-        if(!gl){
-
-            return "Not available";
-
-        }
+        if (!gl)
+            return "GPU information unavailable";
 
 
         const debugInfo =
@@ -2071,190 +1329,125 @@ function getGPUInfo(){
             );
 
 
-        if(debugInfo){
+        if (debugInfo) {
 
-            const gpu =
-                gl.getParameter(
-                    debugInfo.UNMASKED_RENDERER_WEBGL
-                );
-
-
-            return gpu ||
-                "Graphics information unavailable";
-
+            return gl.getParameter(
+                debugInfo.UNMASKED_RENDERER_WEBGL
+            );
         }
 
 
-        return "Graphics information unavailable";
+        return gl.getParameter(
+            gl.RENDERER
+        );
 
+    } catch {
+
+        return "GPU information unavailable";
     }
-
-    catch(error){
-
-        return "Not available";
-
-    }
-
 }
 
 
-/* =========================
-   OPERATING SYSTEM
-========================= */
-
-function getOperatingSystem(){
+function getOperatingSystem() {
 
     const ua =
         navigator.userAgent;
 
 
-    if(ua.includes("Windows NT 10.0"))
-        return "Windows 10 / 11";
+    if (ua.includes("Windows NT 10.0"))
+        return "Windows 10/11";
 
 
-    if(ua.includes("Windows NT 6.3"))
-        return "Windows 8.1";
-
-
-    if(ua.includes("Windows NT 6.2"))
-        return "Windows 8";
-
-
-    if(ua.includes("Windows NT 6.1"))
-        return "Windows 7";
-
-
-    if(ua.includes("Mac OS X"))
+    if (ua.includes("Mac OS X"))
         return "macOS";
 
 
-    if(ua.includes("Android"))
+    if (ua.includes("Android"))
         return "Android";
 
 
-    if(ua.includes("Linux"))
+    if (ua.includes("Linux"))
         return "Linux";
 
 
-    if(ua.includes("iPhone"))
-        return "iOS";
-
-
-    return navigator.platform ||
-        "Unknown";
-
+    return "Unknown";
 }
 
 
-/* =========================
-   BROWSER
-========================= */
-
-function getBrowser(){
+function getBrowser() {
 
     const ua =
         navigator.userAgent;
 
 
-    if(ua.includes("Edg"))
+    if (ua.includes("Edg"))
         return "Microsoft Edge";
 
 
-    if(ua.includes("Chrome"))
+    if (ua.includes("Chrome"))
         return "Google Chrome";
 
 
-    if(ua.includes("Firefox"))
+    if (ua.includes("Firefox"))
         return "Mozilla Firefox";
 
 
-    if(ua.includes("Safari"))
+    if (ua.includes("Safari"))
         return "Safari";
 
 
-    return "Unknown Browser";
-
+    return "Unknown";
 }
 
 
-/* =========================
-   DEVICE
-========================= */
+function detectDevice() {
 
-function detectDevice(){
-
-    const width =
-        window.innerWidth;
-
-
-    if(width<=600)
+    if (window.innerWidth < 600)
         return "Mobile";
 
 
-    if(width<=1024)
+    if (window.innerWidth < 1000)
         return "Tablet";
 
 
-    return "Desktop / PC";
-
+    return "Desktop";
 }
 
 
-/* =========================
-   BATTERY
-========================= */
+async function checkBattery() {
 
-async function checkBattery(){
+    try {
 
-    const batteryElement =
-        document.getElementById(
-            "battery"
-        );
+        if (!navigator.getBattery) {
 
-
-    if("getBattery" in navigator){
-
-        try{
-
-            const battery =
-                await navigator.getBattery();
-
-
-            const percentage =
-                Math.round(
-                    battery.level*100
-                );
-
-
-            batteryElement.innerText =
-                percentage +
-                "% " +
-                (
-                    battery.charging
-                    ?
-                    "⚡ Charging"
-                    :
-                    "🔋 Not charging"
-                );
-
-        }
-
-        catch{
-
-            batteryElement.innerText =
+            document.getElementById(
+                "battery"
+            ).textContent =
                 "Not available";
 
+            return;
         }
 
-    }
 
-    else{
+        const battery =
+            await navigator.getBattery();
 
-        batteryElement.innerText =
+
+        document.getElementById(
+            "battery"
+        ).textContent =
+            Math.round(
+                battery.level * 100
+            ) + "%";
+            
+
+    } catch {
+
+        document.getElementById(
+            "battery"
+        ).textContent =
             "Not available";
-
     }
-
 }
 
 
@@ -2262,79 +1455,91 @@ async function checkBattery(){
    FPS CALCULATOR
 ========================= */
 
-function calculateFPS(){
+function calculateFPS() {
 
     const game =
-        Number(
-            document.getElementById(
-                "game"
-            ).value
-        );
+        document.getElementById(
+            "game"
+        ).value;
 
 
     const gpu =
-        Number(
-            document.getElementById(
-                "gpu"
-            ).value
-        );
+        document.getElementById(
+            "fpsGPU"
+        ).value;
 
 
     const cpu =
-        Number(
-            document.getElementById(
-                "cpu"
-            ).value
-        );
+        document.getElementById(
+            "fpsCPU"
+        ).value;
 
 
     const resolution =
-        Number(
-            document.getElementById(
-                "resolution"
-            ).value
+        document.getElementById(
+            "resolution"
+        ).value;
+
+
+    let fps = 100;
+
+
+    if (gpu.includes("4090"))
+        fps = 220;
+
+    else if (gpu.includes("4080"))
+        fps = 190;
+
+    else if (gpu.includes("4070"))
+        fps = 160;
+
+    else if (gpu.includes("3060"))
+        fps = 100;
+
+    else if (gpu.includes("1660"))
+        fps = 75;
+
+    else
+        fps = 50;
+
+
+    if (cpu.includes("i3"))
+        fps *= 0.7;
+
+    else if (cpu.includes("i5"))
+        fps *= 0.85;
+
+    else if (cpu.includes("i7"))
+        fps *= 0.95;
+
+
+    if (resolution === "1440p")
+        fps *= 0.75;
+
+    if (resolution === "4K")
+        fps *= 0.5;
+
+
+    fps = Math.round(fps);
+
+
+    const result =
+        document.getElementById(
+            "fpsResult"
         );
 
 
-    const fps =
-        Math.round(
-            game *
-            gpu *
-            cpu *
-            resolution
-        );
+    result.style.display =
+        "block";
 
 
-    const minimum =
-        Math.round(
-            fps*0.80
-        );
-
-
-    const maximum =
-        Math.round(
-            fps*1.20
-        );
-
-
-    document.getElementById(
-        "fpsResult"
-    ).innerHTML =
-
-        "<h3>🎮 Estimated FPS</h3>" +
-
-        "<p>" +
-
-        minimum +
-
-        " - " +
-
-        maximum +
-
-        " FPS</p>" +
-
-        "<p>⚠️ Estimated result only.</p>";
-
+    result.innerHTML =
+        `
+        🎮 Game: ${game}<br><br>
+        Estimated FPS: <strong>${fps} FPS</strong>
+        <br><br>
+        ⚠️ This is an estimate, not a benchmark.
+        `;
 }
 
 
@@ -2342,12 +1547,12 @@ function calculateFPS(){
    BOTTLENECK
 ========================= */
 
-function checkBottleneck(){
+function checkBottleneck() {
 
     const cpu =
         Number(
             document.getElementById(
-                "cpuPower"
+                "bCPU"
             ).value
         );
 
@@ -2355,58 +1560,206 @@ function checkBottleneck(){
     const gpu =
         Number(
             document.getElementById(
-                "gpuPower"
+                "bGPU"
             ).value
         );
 
 
     const difference =
-        Math.abs(
-            cpu-gpu
+        Math.abs(cpu - gpu);
+
+
+    let message;
+
+
+    if (difference <= 10) {
+
+        message =
+            "🟢 CPU and GPU are relatively balanced.";
+
+    }
+
+    else if (difference <= 25) {
+
+        message =
+            "🟡 There may be a moderate performance imbalance.";
+
+    }
+
+    else {
+
+        message =
+            "🟠 A significant CPU/GPU performance difference may exist.";
+
+    }
+
+
+    const result =
+        document.getElementById(
+            "bottleneckResult"
         );
 
 
-    let result;
+    result.style.display =
+        "block";
 
 
-    if(difference<=10){
+    result.textContent =
+        message;
+}
 
-        result =
-            "🟢 Balanced CPU/GPU combination.";
 
+/* =========================
+   CONNECT WINDOWS APP
+========================= */
+
+let pcConnected = false;
+
+let monitorStarted = false;
+
+
+async function connectPC() {
+
+    const status =
+        document.getElementById(
+            "connectionStatus"
+        );
+
+
+    status.textContent =
+        "🔄 Connecting to PC Doctor...";
+
+
+    try {
+
+        const response =
+            await fetch(
+                "http://127.0.0.1:8000/pc-status"
+            );
+
+
+        if (!response.ok)
+            throw new Error(
+                "Connection failed"
+            );
+
+
+        const data =
+            await response.json();
+
+
+        pcConnected = true;
+
+
+        status.textContent =
+            "🟢 PC Connected";
+
+
+        document.getElementById(
+            "livePCData"
+        ).style.display =
+            "block";
+
+
+        updatePCData(data);
+
+
+        if (!monitorStarted) {
+
+            monitorStarted = true;
+
+            startLivePCMonitoring();
+        }
+
+
+    } catch (error) {
+
+        pcConnected = false;
+
+
+        status.textContent =
+            "🔴 PC Doctor app is not running";
+
+
+        document.getElementById(
+            "livePCData"
+        ).style.display =
+            "none";
+
+
+        console.error(error);
     }
+}
 
-    else if(difference<=25){
 
-        result =
-            "🟡 Moderate performance imbalance.";
+function updatePCData(data) {
 
-    }
-
-    else{
-
-        result =
-            "🔴 Significant performance imbalance may exist.";
-
-    }
+    document.getElementById(
+        "webCPU"
+    ).textContent =
+        data.cpu + "%";
 
 
     document.getElementById(
-        "bottleneckResult"
-    ).innerHTML =
+        "webRAM"
+    ).textContent =
+        data.ram + "%";
 
-        "<h3>⚙️ Result</h3>" +
 
-        "<p>" +
+    document.getElementById(
+        "webStorage"
+    ).textContent =
+        data.storage + "%";
 
-        result +
 
-        "</p>";
+    document.getElementById(
+        "webOS"
+    ).textContent =
+        data.os;
+}
 
+
+function startLivePCMonitoring() {
+
+    setInterval(
+        async () => {
+
+            if (!pcConnected)
+                return;
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "http://127.0.0.1:8000/pc-status"
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                updatePCData(data);
+
+
+            } catch {
+
+                pcConnected = false;
+
+
+                document.getElementById(
+                    "connectionStatus"
+                ).textContent =
+                    "🔴 PC disconnected";
+            }
+
+        },
+        1000
+    );
 }
 
 </script>
-
 
 </body>
 </html>
