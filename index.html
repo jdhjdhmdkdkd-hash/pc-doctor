@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PC Doctor | PC Diagnostic Tool</title>
+
+    <meta name="description"
+          content="PC Doctor is a free online PC diagnostic and performance checking tool.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #080b12;
+            color: white;
+        }
+
+        header {
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1b2230;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #00d4ff;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00d4ff;
+        }
+
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid #00d4ff;
+            border-radius: 30px;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        h1 span {
+            color: #00d4ff;
+        }
+
+        .hero p {
+            color: #9aa4b2;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #00d4ff;
+            color: #001018;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.25);
+        }
+
+        .tools {
+            padding: 70px 8%;
+            background: #0c1018;
+        }
+
+        .tools h2 {
+            text-align: center;
+            font-size: 35px;
+            margin-bottom: 40px;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-card {
+            background: #111722;
+            border: 1px solid #202938;
+            padding: 30px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+        }
+
+        .tool-card .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .tool-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .tool-card p {
+            color: #8d98a8;
+            line-height: 1.5;
+        }
+
+        footer {
+            padding: 25px;
+            text-align: center;
+            color: #6f7886;
+            border-top: 1px solid #1b2230;
+        }
+
+        @media (max-width: 700px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">PC<span>Doctor</span></div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#tools">Tools</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            ⚡ Free PC Diagnostic Tool
+        </div>
+
+        <h1>
+            Check Your PC's <span>Health</span>
+        </h1>
+
+        <p>
+            Diagnose your computer, check performance,
+            detect common problems and optimize your PC.
+        </p>
+
+        <a href="#tools" class="btn">
+            🔍 Start PC Diagnostic
+        </a>
+
+    </div>
+
+</section>
+
+<section class="tools" id="tools">
+
+    <h2>Powerful PC Tools</h2>
+
+    <div class="tool-grid">
+
+        <div class="tool-card">
+            <div class="icon">🔍</div>
+            <h3>PC Diagnostic</h3>
+            <p>
+                Check your system information and
+                identify common PC problems.
+            </p>
+        </div>
+
+        <div class="tool-card">
+            <div class="icon">🎮</div>
+            <h3>FPS Calculator</h3>
+            <p>
+                Estimate gaming performance based
+                on your PC hardware.
+            </p>
+        </div>
+
+        <div class="tool-card">
+            <div class="icon">⚙️</div>
+            <h3>Bottleneck Checker</h3>
+            <p>
+                Check CPU and GPU combinations
+                for possible bottlenecks.
+            </p>
+        </div>
+
+        <div class="tool-card">
+            <div class="icon">🌡️</div>
+            <h3>PC Health</h3>
+            <p>
+                Learn about CPU, RAM, storage
+                and overall system health.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 PC Doctor. All rights reserved.
+</footer>
+
+</body>
+</html>
