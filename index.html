@@ -499,6 +499,178 @@ async function checkBattery(){
 }
 
 </script>
+<!-- INTERNET SPEED TEST -->
 
+<section class="scanner" id="speed">
+
+<h2>🌐 Internet Speed Test</h2>
+
+<div class="scan-box">
+
+<button class="scan-button" onclick="startSpeedTest()">
+🚀 Test Internet Speed
+</button>
+
+<div class="health">
+    <h3 id="speedStatus">Ready</h3>
+    <p id="speedResult">
+        Click the button to test your connection.
+    </p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TROUBLESHOOTER -->
+
+<section class="scanner" id="troubleshooter">
+
+<h2>🛠️ PC Troubleshooter</h2>
+
+<div class="scan-box">
+
+<div class="grid">
+
+<div class="card">
+
+<h3>🐌 PC Slow</h3>
+
+<p>
+Close unnecessary background apps, restart your PC,
+and check available storage space.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🎮 Game Lag</h3>
+
+<p>
+Update your GPU driver, lower graphics settings,
+and check CPU/GPU usage.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🌡️ High Temperature</h3>
+
+<p>
+Clean dust from the PC, check airflow and make sure
+CPU/GPU cooling is working correctly.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🖥️ No Display</h3>
+
+<p>
+Check the monitor cable, GPU connection, RAM seating
+and monitor input source.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>💾 Storage Full</h3>
+
+<p>
+Remove unnecessary files and keep sufficient free
+space on your system drive.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🔵 Blue Screen</h3>
+
+<p>
+Update drivers and Windows, check recently installed
+hardware/software and review Windows error information.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<script>
+
+async function startSpeedTest(){
+
+    const status =
+        document.getElementById("speedStatus");
+
+    const result =
+        document.getElementById("speedResult");
+
+    status.innerText="Testing...";
+
+    result.innerText=
+        "Please wait while your browser tests the connection.";
+
+    const testURL =
+        "https://speed.cloudflare.com/__down?bytes=10000000";
+
+    const startTime=performance.now();
+
+    try{
+
+        const response=await fetch(
+            testURL + "?cache=" + Date.now(),
+            {cache:"no-store"}
+        );
+
+        const data=await response.blob();
+
+        const endTime=performance.now();
+
+        const seconds=
+            (endTime-startTime)/1000;
+
+        const bytes=data.size;
+
+        const megabits=
+            (bytes*8)/1000000;
+
+        const speed=
+            megabits/seconds;
+
+        status.innerText="✅ Test Complete";
+
+        result.innerText=
+            "Approximate download speed: " +
+            speed.toFixed(2) +
+            " Mbps";
+
+    }catch(error){
+
+        status.innerText="❌ Test Failed";
+
+        result.innerText=
+            "The browser could not complete the speed test. " +
+            "Check your internet connection and try again.";
+
+    }
+}
+
+</script>
 </body>
 </html>
