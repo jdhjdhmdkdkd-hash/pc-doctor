@@ -151,7 +151,7 @@ h1 span{
 /* TOOL BOX */
 
 .tool-box{
-    max-width:1000px;
+    max-width:1050px;
     margin:auto;
     background:#111722;
     border:1px solid #202938;
@@ -205,6 +205,196 @@ h1 span{
 }
 
 
+/* SCANNER */
+
+.progress-area{
+    display:none;
+    margin-bottom:30px;
+}
+
+.progress-text{
+    text-align:center;
+    color:#00d4ff;
+    margin-bottom:10px;
+}
+
+.progress{
+    width:100%;
+    height:8px;
+    background:#202938;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    background:#00d4ff;
+    transition:width .3s;
+}
+
+.results{
+    display:none;
+}
+
+
+/* SCORE */
+
+.final-score{
+    text-align:center;
+    background:#080b12;
+    border:1px solid #202938;
+    border-radius:18px;
+    padding:35px;
+    margin-bottom:30px;
+}
+
+.score-circle{
+    width:190px;
+    height:190px;
+    margin:0 auto 20px;
+    border-radius:50%;
+
+    background:
+    conic-gradient(
+        #00d4ff 0deg,
+        #202938 0deg
+    );
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+}
+
+.score-circle::before{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    background:#080b12;
+    border-radius:50%;
+}
+
+.score-number{
+    position:relative;
+    font-size:42px;
+    font-weight:bold;
+    color:#00d4ff;
+}
+
+.score-number small{
+    font-size:18px;
+    color:#8d98a8;
+}
+
+.score-title{
+    color:#00d4ff;
+    font-size:21px;
+    font-weight:bold;
+}
+
+
+/* COMPONENT SCORES */
+
+.score-card{
+    background:#080b12;
+    border:1px solid #202938;
+    border-radius:14px;
+    padding:22px;
+}
+
+.score-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:14px;
+}
+
+.score-header h3{
+    color:#ddd;
+    font-size:17px;
+}
+
+.score-value{
+    color:#00d4ff;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.score-bar{
+    height:10px;
+    background:#202938;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.score-fill{
+    width:0%;
+    height:100%;
+    background:#00d4ff;
+    border-radius:20px;
+    transition:width 1s ease;
+}
+
+.score-status{
+    margin-top:12px;
+    color:#9aa4b2;
+    font-size:14px;
+}
+
+
+/* RECOMMENDATIONS */
+
+.recommendations{
+    margin-top:30px;
+    background:#080b12;
+    border:1px solid #202938;
+    border-radius:14px;
+    padding:25px;
+}
+
+.recommendations h3{
+    color:#00d4ff;
+    margin-bottom:18px;
+}
+
+.recommendation{
+    padding:14px;
+    margin-bottom:10px;
+    background:#111722;
+    border-radius:8px;
+    color:#ddd;
+    line-height:1.6;
+}
+
+.recommendation:last-child{
+    margin-bottom:0;
+}
+
+
+/* HEALTH */
+
+.health{
+    margin-top:25px;
+    text-align:center;
+    padding:25px;
+    border-radius:12px;
+    background:#080b12;
+    border:1px solid #202938;
+}
+
+.health h3{
+    color:#00d4ff;
+    margin-bottom:10px;
+}
+
+.health p{
+    color:#aaa;
+}
+
+
 /* FORM */
 
 label{
@@ -255,122 +445,6 @@ select:focus{
 }
 
 
-/* SCANNER */
-
-.progress-area{
-    display:none;
-    margin-bottom:30px;
-}
-
-.progress-text{
-    text-align:center;
-    color:#00d4ff;
-    margin-bottom:10px;
-}
-
-.progress{
-    width:100%;
-    height:8px;
-    background:#202938;
-    border-radius:10px;
-    overflow:hidden;
-}
-
-.progress-bar{
-    width:0%;
-    height:100%;
-    background:#00d4ff;
-    transition:width .3s;
-}
-
-.results{
-    display:none;
-}
-
-
-/* HEALTH SCORE */
-
-.score-box{
-    margin-top:30px;
-    background:#080b12;
-    border:1px solid #202938;
-    border-radius:16px;
-    padding:30px;
-    text-align:center;
-}
-
-.score-circle{
-    width:180px;
-    height:180px;
-    margin:0 auto 20px;
-
-    border-radius:50%;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    background:
-    conic-gradient(
-        #00d4ff 0deg,
-        #00d4ff 0deg,
-        #202938 0deg
-    );
-
-    position:relative;
-}
-
-.score-circle::before{
-    content:"";
-    position:absolute;
-    width:145px;
-    height:145px;
-    background:#080b12;
-    border-radius:50%;
-}
-
-.score-number{
-    position:relative;
-    font-size:40px;
-    font-weight:bold;
-    color:#00d4ff;
-}
-
-.score-label{
-    position:relative;
-    color:#8d98a8;
-    margin-top:5px;
-}
-
-.score-status{
-    font-size:20px;
-    font-weight:bold;
-    color:#00d4ff;
-}
-
-
-/* HEALTH */
-
-.health{
-    margin-top:25px;
-    text-align:center;
-    padding:25px;
-    border-radius:12px;
-    background:#080b12;
-    border:1px solid #202938;
-}
-
-.health h3{
-    color:#00d4ff;
-    margin-bottom:10px;
-}
-
-.health p{
-    color:#aaa;
-}
-
-
 /* FOOTER */
 
 footer{
@@ -399,6 +473,20 @@ footer{
 
     .hero{
         min-height:60vh;
+    }
+
+    .tool-box{
+        padding:20px;
+    }
+
+    .score-circle{
+        width:160px;
+        height:160px;
+    }
+
+    .score-circle::before{
+        width:125px;
+        height:125px;
     }
 
 }
@@ -461,9 +549,9 @@ Check Your PC's <span>Health</span>
 </h1>
 
 <p>
-Diagnose your computer, check hardware information,
-estimate gaming performance and find solutions
-to common PC problems.
+Analyze your PC hardware, calculate performance,
+check system health and find solutions to common
+PC problems.
 </p>
 
 <button
@@ -527,29 +615,72 @@ class="results"
 id="results">
 
 
-<!-- HEALTH SCORE -->
+<!-- FINAL SCORE -->
 
-<div class="score-box">
+<div class="final-score">
 
-<div class="score-circle" id="scoreCircle">
+<div
+class="score-circle"
+id="finalScoreCircle">
 
 <div
 class="score-number"
-id="scoreNumber">
+id="finalScore">
 
 0
 
+<small>/100</small>
+
 </div>
 
-<div class="score-label">
-/ 100
+</div>
+
+<div
+class="score-title"
+id="scoreTitle">
+
+Analyzing PC Health...
+
+</div>
+
+</div>
+
+
+<!-- COMPONENT SCORES -->
+
+<div class="grid">
+
+
+<div class="score-card">
+
+<div class="score-header">
+
+<h3>
+🧠 CPU Score
+</h3>
+
+<div
+class="score-value"
+id="cpuScore">
+
+0/100
+
+</div>
+
+</div>
+
+<div class="score-bar">
+
+<div
+class="score-fill"
+id="cpuBar">
 </div>
 
 </div>
 
 <div
 class="score-status"
-id="scoreStatus">
+id="cpuStatus">
 
 Analyzing...
 
@@ -558,10 +689,125 @@ Analyzing...
 </div>
 
 
+<div class="score-card">
+
+<div class="score-header">
+
+<h3>
+💾 RAM Score
+</h3>
+
+<div
+class="score-value"
+id="ramScore">
+
+0/100
+
+</div>
+
+</div>
+
+<div class="score-bar">
+
+<div
+class="score-fill"
+id="ramBar">
+</div>
+
+</div>
+
+<div
+class="score-status"
+id="ramStatus">
+
+Analyzing...
+
+</div>
+
+</div>
+
+
+<div class="score-card">
+
+<div class="score-header">
+
+<h3>
+🎮 GPU Score
+</h3>
+
+<div
+class="score-value"
+id="gpuScore">
+
+0/100
+
+</div>
+
+</div>
+
+<div class="score-bar">
+
+<div
+class="score-fill"
+id="gpuBar">
+</div>
+
+</div>
+
+<div
+class="score-status"
+id="gpuStatus">
+
+Analyzing...
+
+</div>
+
+</div>
+
+
+<div class="score-card">
+
+<div class="score-header">
+
+<h3>
+💿 Storage Score
+</h3>
+
+<div
+class="score-value"
+id="storageScore">
+
+0/100
+
+</div>
+
+</div>
+
+<div class="score-bar">
+
+<div
+class="score-fill"
+id="storageBar">
+</div>
+
+</div>
+
+<div
+class="score-status"
+id="storageStatus">
+
+Analyzing...
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- HARDWARE INFO -->
+
 <br>
-
-
-<!-- HARDWARE INFORMATION -->
 
 <h2 style="font-size:25px;margin-bottom:25px;">
 
@@ -706,6 +952,23 @@ Checking...
 </div>
 
 
+<!-- RECOMMENDATIONS -->
+
+<div class="recommendations">
+
+<h3>
+💡 PC Doctor Recommendations
+</h3>
+
+<div id="recommendations">
+
+Analyzing your PC...
+
+</div>
+
+</div>
+
+
 <div class="health">
 
 <h3>
@@ -717,6 +980,7 @@ Analysis pending...
 </p>
 
 </div>
+
 
 </div>
 
@@ -1114,7 +1378,7 @@ recently installed hardware or software.
 
 
 /* =========================
-   START PC SCAN
+   START SCAN
 ========================= */
 
 function startScan(){
@@ -1162,19 +1426,19 @@ function startScan(){
 
     const messages=[
 
-        "Checking system...",
+        "Checking CPU...",
 
-        "Detecting CPU...",
+        "Analyzing RAM...",
 
-        "Checking memory...",
+        "Detecting GPU...",
 
-        "Detecting graphics information...",
+        "Checking storage...",
 
-        "Checking display...",
+        "Checking operating system...",
 
         "Checking battery...",
 
-        "Calculating health score..."
+        "Calculating component scores..."
 
     ];
 
@@ -1193,7 +1457,7 @@ function startScan(){
                 progress+"%";
 
 
-            let index =
+            const index =
                 Math.min(
                     Math.floor(progress/15),
                     messages.length-1
@@ -1231,20 +1495,27 @@ async function showResults(){
 
     /* CPU */
 
+    const cpuThreads =
+        nav.hardwareConcurrency || 0;
+
+
     document.getElementById(
         "cpuInfo"
     ).innerText =
-        getCPUInfo();
+        cpuThreads
+        ?
+        cpuThreads +
+        " logical threads"
+        :
+        "Not available";
 
-
-    /* CPU THREADS */
 
     document.getElementById(
         "threads"
     ).innerText =
-        nav.hardwareConcurrency
+        cpuThreads
         ?
-        nav.hardwareConcurrency +
+        cpuThreads +
         " logical threads"
         :
         "Not available";
@@ -1252,12 +1523,16 @@ async function showResults(){
 
     /* RAM */
 
+    const ram =
+        nav.deviceMemory || 0;
+
+
     document.getElementById(
         "memory"
     ).innerText =
-        nav.deviceMemory
+        ram
         ?
-        nav.deviceMemory +
+        ram +
         " GB (approx.)"
         :
         "Not available";
@@ -1319,49 +1594,449 @@ async function showResults(){
     checkBattery();
 
 
-    /* HEALTH SCORE */
+    /* CALCULATE SCORES */
 
-    calculateHealthScore();
+    const cpuScore =
+        calculateCPUScore(
+            cpuThreads
+        );
+
+
+    const ramScore =
+        calculateRAMScore(
+            ram
+        );
+
+
+    const gpuScore =
+        calculateGPUScore()
+        ;
+
+
+    const storageScore =
+        calculateStorageScore();
+
+
+    const finalScore =
+        Math.round(
+            (
+                cpuScore +
+                ramScore +
+                gpuScore +
+                storageScore
+            ) / 4
+        );
+
+
+    /* UPDATE COMPONENT SCORES */
+
+    updateComponentScore(
+        "cpu",
+        cpuScore
+    );
+
+    updateComponentScore(
+        "ram",
+        ramScore
+    );
+
+    updateComponentScore(
+        "gpu",
+        gpuScore
+    );
+
+    updateComponentScore(
+        "storage",
+        storageScore
+    );
+
+
+    /* FINAL SCORE */
+
+    updateFinalScore(
+        finalScore
+    );
+
+
+    /* RECOMMENDATIONS */
+
+    generateRecommendations(
+        cpuScore,
+        ramScore,
+        gpuScore,
+        storageScore
+    );
 
 
     document.getElementById(
         "healthText"
     ).innerText =
-        "✅ Scan completed successfully. Hardware information and health score are ready.";
+        "✅ Scan completed. Review your component scores and recommendations.";
 
 
-    document.getElementById(
-        "results"
-    ).style.display =
+    results.style.display =
         "block";
 
 }
 
 
 /* =========================
-   CPU INFO
+   CPU SCORE
 ========================= */
 
-function getCPUInfo(){
+function calculateCPUScore(threads){
 
-    const threads =
-        navigator.hardwareConcurrency;
+    if(!threads)
+        return 50;
 
 
-    if(threads){
+    if(threads>=24)
+        return 100;
 
-        return threads +
-        " logical threads";
 
-    }
+    if(threads>=16)
+        return 95;
 
-    return "Not available";
+
+    if(threads>=12)
+        return 90;
+
+
+    if(threads>=8)
+        return 82;
+
+
+    if(threads>=6)
+        return 72;
+
+
+    if(threads>=4)
+        return 60;
+
+
+    return 45;
 
 }
 
 
 /* =========================
-   GPU INFO
+   RAM SCORE
+========================= */
+
+function calculateRAMScore(ram){
+
+    if(!ram)
+        return 50;
+
+
+    if(ram>=32)
+        return 100;
+
+
+    if(ram>=16)
+        return 95;
+
+
+    if(ram>=12)
+        return 88;
+
+
+    if(ram>=8)
+        return 80;
+
+
+    if(ram>=4)
+        return 60;
+
+
+    return 40;
+
+}
+
+
+/* =========================
+   GPU SCORE
+========================= */
+
+function calculateGPUScore(){
+
+    const gpu =
+        getGPUInfo().toLowerCase();
+
+
+    if(
+        gpu.includes("4090") ||
+        gpu.includes("4080") ||
+        gpu.includes("7900")
+    ){
+        return 100;
+    }
+
+
+    if(
+        gpu.includes("4070") ||
+        gpu.includes("3080") ||
+        gpu.includes("3090") ||
+        gpu.includes("7800")
+    ){
+        return 92;
+    }
+
+
+    if(
+        gpu.includes("3070") ||
+        gpu.includes("4060") ||
+        gpu.includes("3060") ||
+        gpu.includes("7600")
+    ){
+        return 82;
+    }
+
+
+    if(
+        gpu.includes("1660") ||
+        gpu.includes("2060") ||
+        gpu.includes("3050")
+    ){
+        return 72;
+    }
+
+
+    if(
+        gpu.includes("1050") ||
+        gpu.includes("1650")
+    ){
+        return 60;
+    }
+
+
+    if(
+        gpu.includes("intel") ||
+        gpu.includes("uhd") ||
+        gpu.includes("vega")
+    ){
+        return 55;
+    }
+
+
+    return 65;
+
+}
+
+
+/* =========================
+   STORAGE SCORE
+========================= */
+
+function calculateStorageScore(){
+
+    /*
+       Browser cannot reliably read
+       SSD/HDD health or SMART data.
+
+       Therefore this is a neutral
+       estimated score.
+    */
+
+    if(
+        navigator.storage &&
+        navigator.storage.estimate
+    ){
+
+        return 75;
+
+    }
+
+    return 70;
+
+}
+
+
+/* =========================
+   COMPONENT SCORE UPDATE
+========================= */
+
+function updateComponentScore(
+    type,
+    score
+){
+
+    document.getElementById(
+        type+"Score"
+    ).innerText =
+        score + "/100";
+
+
+    document.getElementById(
+        type+"Bar"
+    ).style.width =
+        score+"%";
+
+
+    document.getElementById(
+        type+"Status"
+    ).innerText =
+        getScoreStatus(score);
+
+}
+
+
+/* =========================
+   SCORE STATUS
+========================= */
+
+function getScoreStatus(score){
+
+    if(score>=85)
+        return "🟢 Excellent";
+
+
+    if(score>=70)
+        return "🟡 Good";
+
+
+    if(score>=50)
+        return "🟠 Needs Attention";
+
+
+    return "🔴 Critical";
+
+}
+
+
+/* =========================
+   FINAL SCORE
+========================= */
+
+function updateFinalScore(score){
+
+    const number =
+        document.getElementById(
+            "finalScore"
+        );
+
+
+    const circle =
+        document.getElementById(
+            "finalScoreCircle"
+        );
+
+
+    const title =
+        document.getElementById(
+            "scoreTitle"
+        );
+
+
+    number.innerHTML =
+        score +
+        "<small>/100</small>";
+
+
+    const degrees =
+        (score/100)*360;
+
+
+    circle.style.background =
+        `conic-gradient(
+            #00d4ff ${degrees}deg,
+            #202938 ${degrees}deg
+        )`;
+
+
+    title.innerText =
+        getScoreStatus(score) +
+        " PC Health";
+
+}
+
+
+/* =========================
+   RECOMMENDATIONS
+========================= */
+
+function generateRecommendations(
+    cpu,
+    ram,
+    gpu,
+    storage
+){
+
+    const box =
+        document.getElementById(
+            "recommendations"
+        );
+
+
+    let list=[];
+
+
+    if(cpu<70){
+
+        list.push(
+            "🧠 Your CPU score is relatively low. Close unnecessary background applications and consider a CPU upgrade for demanding workloads."
+        );
+
+    }
+
+
+    if(ram<70){
+
+        list.push(
+            "💾 Your RAM score is low. More RAM may improve multitasking and some gaming workloads."
+        );
+
+    }
+
+
+    if(gpu<70){
+
+        list.push(
+            "🎮 Your GPU score is relatively low. Lower graphics settings in demanding games or consider a GPU upgrade."
+        );
+
+    }
+
+
+    if(storage<70){
+
+        list.push(
+            "💿 Storage needs attention. Free up unnecessary files and check your drive health using a dedicated SMART/storage diagnostic tool."
+        );
+
+    }
+
+
+    if(list.length===0){
+
+        list.push(
+            "✅ Your detected system indicators look good. Keep Windows, drivers and important software updated."
+        );
+
+        list.push(
+            "🛡️ Keep enough free storage space and maintain good PC airflow."
+        );
+
+        list.push(
+            "🎮 For gaming, keep your GPU drivers updated and monitor temperatures."
+        );
+
+    }
+
+
+    box.innerHTML =
+        list.map(
+            item =>
+            `<div class="recommendation">
+                ${item}
+            </div>`
+        ).join("");
+
+}
+
+
+/* =========================
+   GPU INFORMATION
 ========================= */
 
 function getGPUInfo(){
@@ -1577,180 +2252,6 @@ async function checkBattery(){
 
         batteryElement.innerText =
             "Not available";
-
-    }
-
-}
-
-
-/* =========================
-   HEALTH SCORE
-========================= */
-
-function calculateHealthScore(){
-
-    let score=70;
-
-
-    /* CPU */
-
-    const threads =
-        navigator.hardwareConcurrency ||
-        0;
-
-
-    if(threads>=16){
-
-        score += 15;
-
-    }
-
-    else if(threads>=8){
-
-        score += 10;
-
-    }
-
-    else if(threads>=4){
-
-        score += 5;
-
-    }
-
-
-    /* RAM */
-
-    const ram =
-        navigator.deviceMemory ||
-        0;
-
-
-    if(ram>=16){
-
-        score += 10;
-
-    }
-
-    else if(ram>=8){
-
-        score += 7;
-
-    }
-
-    else if(ram>=4){
-
-        score += 3;
-
-    }
-
-
-    /* Battery */
-
-    if(
-        "getBattery" in navigator
-    ){
-
-        navigator
-        .getBattery()
-        .then(battery=>{
-
-            if(
-                battery.level >= 0.7
-            ){
-
-                score += 5;
-
-            }
-
-            updateScore(score);
-
-        })
-        .catch(()=>{
-
-            updateScore(score);
-
-        });
-
-    }
-
-    else{
-
-        updateScore(score);
-
-    }
-
-}
-
-
-/* =========================
-   UPDATE SCORE
-========================= */
-
-function updateScore(score){
-
-    if(score>100){
-        score=100;
-    }
-
-
-    const scoreNumber =
-        document.getElementById(
-            "scoreNumber"
-        );
-
-
-    const scoreCircle =
-        document.getElementById(
-            "scoreCircle"
-        );
-
-
-    const scoreStatus =
-        document.getElementById(
-            "scoreStatus"
-        );
-
-
-    scoreNumber.innerText =
-        score;
-
-
-    const degrees =
-        (score/100)*360;
-
-
-    scoreCircle.style.background =
-        `conic-gradient(
-            #00d4ff ${degrees}deg,
-            #202938 ${degrees}deg
-        )`;
-
-
-    if(score>=85){
-
-        scoreStatus.innerText =
-            "🟢 Excellent PC Health";
-
-    }
-
-    else if(score>=70){
-
-        scoreStatus.innerText =
-            "🟡 Good PC Health";
-
-    }
-
-    else if(score>=50){
-
-        scoreStatus.innerText =
-            "🟠 Needs Attention";
-
-    }
-
-    else{
-
-        scoreStatus.innerText =
-            "🔴 Poor PC Health";
 
     }
 
