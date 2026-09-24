@@ -8,7 +8,7 @@
 <title>PC Doctor | PC Diagnostic Tool</title>
 
 <meta name="description"
-content="PC Doctor - Free PC diagnostic, FPS calculator, bottleneck checker, speed test and troubleshooting tools.">
+content="PC Doctor - Free PC diagnostic, FPS calculator, bottleneck checker and troubleshooting tools.">
 
 <style>
 
@@ -16,7 +16,7 @@ content="PC Doctor - Free PC diagnostic, FPS calculator, bottleneck checker, spe
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 html{
@@ -27,6 +27,7 @@ body{
     background:#080b12;
     color:white;
 }
+
 
 /* HEADER */
 
@@ -66,6 +67,7 @@ nav a{
 nav a:hover{
     color:#00d4ff;
 }
+
 
 /* HERO */
 
@@ -107,6 +109,9 @@ h1 span{
     margin-bottom:30px;
 }
 
+
+/* BUTTON */
+
 .btn{
     background:#00d4ff;
     color:#001018;
@@ -124,7 +129,8 @@ h1 span{
     box-shadow:0 0 25px #00d4ff55;
 }
 
-/* GENERAL SECTION */
+
+/* SECTIONS */
 
 .section{
     padding:70px 8%;
@@ -141,7 +147,8 @@ h1 span{
     margin-bottom:40px;
 }
 
-/* BOX */
+
+/* TOOL BOX */
 
 .tool-box{
     max-width:950px;
@@ -151,6 +158,7 @@ h1 span{
     border-radius:16px;
     padding:30px;
 }
+
 
 /* GRID */
 
@@ -167,6 +175,7 @@ h1 span{
     repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
 }
+
 
 /* CARDS */
 
@@ -195,7 +204,8 @@ h1 span{
     word-break:break-word;
 }
 
-/* INPUT */
+
+/* FORM */
 
 label{
     display:block;
@@ -222,6 +232,7 @@ select:focus{
     margin-top:25px;
 }
 
+
 /* RESULT */
 
 .result{
@@ -242,6 +253,7 @@ select:focus{
     color:#ddd;
     line-height:1.7;
 }
+
 
 /* SCANNER */
 
@@ -275,8 +287,6 @@ select:focus{
     display:none;
 }
 
-/* HEALTH */
-
 .health{
     margin-top:25px;
     text-align:center;
@@ -295,6 +305,7 @@ select:focus{
     color:#aaa;
 }
 
+
 /* FOOTER */
 
 footer{
@@ -303,6 +314,7 @@ footer{
     color:#6f7886;
     border-top:1px solid #202938;
 }
+
 
 /* MOBILE */
 
@@ -344,7 +356,9 @@ PC<span>Doctor</span>
 
 <nav>
 
-<a href="#">Home</a>
+<a href="#">
+Home
+</a>
 
 <a href="#scanner">
 Health Scanner
@@ -356,10 +370,6 @@ FPS Calculator
 
 <a href="#bottleneck">
 Bottleneck
-</a>
-
-<a href="#speed">
-Speed Test
 </a>
 
 <a href="#troubleshooter">
@@ -387,10 +397,12 @@ Check Your PC's <span>Health</span>
 
 <p>
 Diagnose your computer, estimate gaming performance,
-check internet speed and find solutions to common PC problems.
+check hardware balance and find solutions to common
+PC problems.
 </p>
 
-<button class="btn"
+<button
+class="btn"
 onclick="startScan()">
 
 🔍 Start PC Diagnostic
@@ -412,7 +424,8 @@ onclick="startScan()">
 
 <div class="tool-box">
 
-<button class="btn calculate"
+<button
+class="btn calculate"
 onclick="startScan()">
 
 🚀 Start Full PC Scan
@@ -420,10 +433,12 @@ onclick="startScan()">
 </button>
 
 
-<div class="progress-area"
+<div
+class="progress-area"
 id="progressArea">
 
-<div class="progress-text"
+<div
+class="progress-text"
 id="progressText">
 
 Preparing scan...
@@ -432,7 +447,8 @@ Preparing scan...
 
 <div class="progress">
 
-<div class="progress-bar"
+<div
+class="progress-bar"
 id="progressBar">
 </div>
 
@@ -441,8 +457,10 @@ id="progressBar">
 </div>
 
 
-<div class="results"
+<div
+class="results"
 id="results">
+
 
 <div class="grid">
 
@@ -714,11 +732,11 @@ Resolution
 
 </div>
 
-
 </div>
 
 
-<button class="btn calculate"
+<button
+class="btn calculate"
 onclick="calculateFPS()">
 
 🚀 Calculate FPS
@@ -726,7 +744,8 @@ onclick="calculateFPS()">
 </button>
 
 
-<div class="result"
+<div
+class="result"
 id="fpsResult">
 
 <h3>
@@ -739,7 +758,6 @@ Select your hardware and calculate.
 
 </div>
 
-
 </div>
 
 </section>
@@ -747,7 +765,9 @@ Select your hardware and calculate.
 
 <!-- BOTTLENECK -->
 
-<section class="section" id="bottleneck">
+<section
+class="section"
+id="bottleneck">
 
 <h2>
 ⚙️ Bottleneck Checker
@@ -808,11 +828,11 @@ Entry-Level GPU
 
 </div>
 
-
 </div>
 
 
-<button class="btn calculate"
+<button
+class="btn calculate"
 onclick="checkBottleneck()">
 
 🔍 Check Bottleneck
@@ -820,7 +840,8 @@ onclick="checkBottleneck()">
 </button>
 
 
-<div class="result"
+<div
+class="result"
 id="bottleneckResult">
 
 <h3>
@@ -833,42 +854,6 @@ Select CPU and GPU level.
 
 </div>
 
-
-</div>
-
-</section>
-
-
-<!-- INTERNET SPEED -->
-
-<section class="section" id="speed">
-
-<h2>
-🌐 Internet Speed Test
-</h2>
-
-<div class="tool-box">
-
-<button class="btn calculate"
-onclick="startSpeedTest()">
-
-🚀 Test Internet Speed
-
-</button>
-
-
-<div class="health">
-
-<h3 id="speedStatus">
-Ready
-</h3>
-
-<p id="speedResult">
-Click the button to test your connection.
-</p>
-
-</div>
-
 </div>
 
 </section>
@@ -876,7 +861,8 @@ Click the button to test your connection.
 
 <!-- TROUBLESHOOTER -->
 
-<section class="section"
+<section
+class="section"
 id="troubleshooter">
 
 <h2>
@@ -1003,25 +989,40 @@ function startScan(){
         behavior:"smooth"
     });
 
+
     const progressArea =
-        document.getElementById("progressArea");
+        document.getElementById(
+            "progressArea"
+        );
 
     const progressBar =
-        document.getElementById("progressBar");
+        document.getElementById(
+            "progressBar"
+        );
 
     const progressText =
-        document.getElementById("progressText");
+        document.getElementById(
+            "progressText"
+        );
 
     const results =
-        document.getElementById("results");
+        document.getElementById(
+            "results"
+        );
 
-    progressArea.style.display="block";
 
-    results.style.display="none";
+    progressArea.style.display =
+        "block";
 
-    progressBar.style.width="0%";
+    results.style.display =
+        "none";
+
+    progressBar.style.width =
+        "0%";
+
 
     let progress=0;
+
 
     const messages=[
 
@@ -1041,99 +1042,124 @@ function startScan(){
 
     ];
 
-    const interval=setInterval(()=>{
 
-        progress += 15;
+    const interval =
+        setInterval(()=>{
 
-        if(progress>100){
-            progress=100;
-        }
+            progress += 15;
 
-        progressBar.style.width=
-            progress+"%";
+            if(progress>100){
+                progress=100;
+            }
 
-        let index=Math.min(
-            Math.floor(progress/15),
-            messages.length-1
-        );
 
-        progressText.innerText=
-            messages[index];
+            progressBar.style.width =
+                progress+"%";
 
-        if(progress>=100){
 
-            clearInterval(interval);
+            let index =
+                Math.min(
+                    Math.floor(progress/15),
+                    messages.length-1
+                );
 
-            setTimeout(showResults,500);
 
-        }
+            progressText.innerText =
+                messages[index];
 
-    },350);
+
+            if(progress>=100){
+
+                clearInterval(interval);
+
+                setTimeout(
+                    showResults,
+                    500
+                );
+
+            }
+
+        },350);
 
 }
 
 
-/* SHOW SCAN RESULTS */
+/* SHOW RESULTS */
 
 async function showResults(){
 
     const nav=navigator;
 
 
-    document.getElementById("platform")
-    .innerText =
-        nav.platform || "Not available";
+    document.getElementById(
+        "platform"
+    ).innerText =
+        nav.platform ||
+        "Not available";
 
 
-    document.getElementById("browser")
-    .innerText =
+    document.getElementById(
+        "browser"
+    ).innerText =
         getBrowser();
 
 
-    document.getElementById("threads")
-    .innerText =
+    document.getElementById(
+        "threads"
+    ).innerText =
         nav.hardwareConcurrency
-        ? nav.hardwareConcurrency +
-          " logical threads"
-        : "Not available";
+        ?
+        nav.hardwareConcurrency +
+        " logical threads"
+        :
+        "Not available";
 
 
-    document.getElementById("memory")
-    .innerText =
+    document.getElementById(
+        "memory"
+    ).innerText =
         nav.deviceMemory
-        ? nav.deviceMemory +
-          " GB (approx.)"
-        : "Not available";
+        ?
+        nav.deviceMemory +
+        " GB (approx.)"
+        :
+        "Not available";
 
 
-    document.getElementById("screen")
-    .innerText =
+    document.getElementById(
+        "screen"
+    ).innerText =
         screen.width +
         " × " +
         screen.height;
 
 
-    document.getElementById("language")
-    .innerText =
+    document.getElementById(
+        "language"
+    ).innerText =
         nav.language ||
         "Not available";
 
 
-    document.getElementById("device")
-    .innerText =
+    document.getElementById(
+        "device"
+    ).innerText =
         detectDevice();
 
 
     checkBattery();
 
 
-    document.getElementById("healthText")
-    .innerText =
+    document.getElementById(
+        "healthText"
+    ).innerText =
         "✅ Scan completed successfully. Review the information above.";
 
 
-    document.getElementById("results")
-    .style.display="block";
+    document.getElementById(
+        "results"
+    ).style.display =
+        "block";
 
 }
 
@@ -1145,17 +1171,22 @@ function getBrowser(){
     const ua =
         navigator.userAgent;
 
+
     if(ua.includes("Edg"))
         return "Microsoft Edge";
+
 
     if(ua.includes("Chrome"))
         return "Google Chrome";
 
+
     if(ua.includes("Firefox"))
         return "Mozilla Firefox";
 
+
     if(ua.includes("Safari"))
         return "Safari";
+
 
     return "Unknown Browser";
 
@@ -1169,11 +1200,14 @@ function detectDevice(){
     const width =
         window.innerWidth;
 
+
     if(width<=600)
         return "Mobile";
 
+
     if(width<=1024)
         return "Tablet";
+
 
     return "Desktop / PC";
 
@@ -1185,7 +1219,10 @@ function detectDevice(){
 async function checkBattery(){
 
     const batteryElement =
-        document.getElementById("battery");
+        document.getElementById(
+            "battery"
+        );
+
 
     if("getBattery" in navigator){
 
@@ -1194,18 +1231,22 @@ async function checkBattery(){
             const battery =
                 await navigator.getBattery();
 
+
             const percentage =
                 Math.round(
                     battery.level*100
                 );
+
 
             batteryElement.innerText =
                 percentage +
                 "% " +
                 (
                     battery.charging
-                    ? "⚡ Charging"
-                    : "🔋 Not charging"
+                    ?
+                    "⚡ Charging"
+                    :
+                    "🔋 Not charging"
                 );
 
         }
@@ -1235,26 +1276,33 @@ function calculateFPS(){
 
     const game =
         Number(
-            document.getElementById("game")
-            .value
+            document.getElementById(
+                "game"
+            ).value
         );
+
 
     const gpu =
         Number(
-            document.getElementById("gpu")
-            .value
+            document.getElementById(
+                "gpu"
+            ).value
         );
+
 
     const cpu =
         Number(
-            document.getElementById("cpu")
-            .value
+            document.getElementById(
+                "cpu"
+            ).value
         );
+
 
     const resolution =
         Number(
-            document.getElementById("resolution")
-            .value
+            document.getElementById(
+                "resolution"
+            ).value
         );
 
 
@@ -1279,19 +1327,23 @@ function calculateFPS(){
         );
 
 
-    document.getElementById("fpsResult")
-    .innerHTML =
+    document.getElementById(
+        "fpsResult"
+    ).innerHTML =
 
-    "<h3>🎮 Estimated FPS</h3>" +
+        "<h3>🎮 Estimated FPS</h3>" +
 
-    "<p>" +
-    minimum +
-    " - " +
-    maximum +
-    " FPS" +
-    "</p>" +
+        "<p>" +
 
-    "<p>⚠️ Estimated result only.</p>";
+        minimum +
+
+        " - " +
+
+        maximum +
+
+        " FPS</p>" +
+
+        "<p>⚠️ Estimated result only.</p>";
 
 }
 
@@ -1302,19 +1354,24 @@ function checkBottleneck(){
 
     const cpu =
         Number(
-            document.getElementById("cpuPower")
-            .value
+            document.getElementById(
+                "cpuPower"
+            ).value
         );
+
 
     const gpu =
         Number(
-            document.getElementById("gpuPower")
-            .value
+            document.getElementById(
+                "gpuPower"
+            ).value
         );
 
 
     const difference =
-        Math.abs(cpu-gpu);
+        Math.abs(
+            cpu-gpu
+        );
 
 
     let result;
@@ -1323,21 +1380,21 @@ function checkBottleneck(){
     if(difference<=10){
 
         result =
-        "🟢 Balanced CPU/GPU combination.";
+            "🟢 Balanced CPU/GPU combination.";
 
     }
 
     else if(difference<=25){
 
         result =
-        "🟡 Moderate performance imbalance.";
+            "🟡 Moderate performance imbalance.";
 
     }
 
     else{
 
         result =
-        "🔴 Significant performance imbalance may exist.";
+            "🔴 Significant performance imbalance may exist.";
 
     }
 
@@ -1346,104 +1403,13 @@ function checkBottleneck(){
         "bottleneckResult"
     ).innerHTML =
 
-    "<h3>⚙️ Result</h3>" +
+        "<h3>⚙️ Result</h3>" +
 
-    "<p>" +
-    result +
-    "</p>";
+        "<p>" +
 
-}
+        result +
 
-
-/* INTERNET SPEED */
-
-async function startSpeedTest(){
-
-    const status =
-        document.getElementById(
-            "speedStatus"
-        );
-
-    const result =
-        document.getElementById(
-            "speedResult"
-        );
-
-
-    status.innerText =
-        "Testing...";
-
-
-    result.innerText =
-        "Please wait...";
-
-
-    const testURL =
-        "https://speed.cloudflare.com/__down?bytes=10000000";
-
-
-    const startTime =
-        performance.now();
-
-
-    try{
-
-        const response =
-            await fetch(
-                testURL +
-                "?cache=" +
-                Date.now(),
-                {
-                    cache:"no-store"
-                }
-            );
-
-
-        const data =
-            await response.blob();
-
-
-        const endTime =
-            performance.now();
-
-
-        const seconds =
-            (endTime-startTime)/1000;
-
-
-        const bytes =
-            data.size;
-
-
-        const megabits =
-            (bytes*8)/1000000;
-
-
-        const speed =
-            megabits/seconds;
-
-
-        status.innerText =
-            "✅ Test Complete";
-
-
-        result.innerText =
-            "Approximate Download Speed: " +
-            speed.toFixed(2) +
-            " Mbps";
-
-    }
-
-    catch(error){
-
-        status.innerText =
-            "❌ Test Failed";
-
-
-        result.innerText =
-            "Could not complete the speed test. Try again.";
-
-    }
+        "</p>";
 
 }
 
