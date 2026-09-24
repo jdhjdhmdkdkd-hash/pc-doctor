@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PC Doctor | PC Health Scanner</title>
+<title>PC Doctor | PC Diagnostic Tool</title>
+
+<meta name="description"
+content="PC Doctor - Free PC diagnostic, FPS calculator, bottleneck checker, speed test and troubleshooting tools.">
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
+    font-family:Arial, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
@@ -19,12 +28,19 @@ body{
     color:white;
 }
 
+/* HEADER */
+
 header{
     padding:20px 8%;
     display:flex;
     justify-content:space-between;
     align-items:center;
     border-bottom:1px solid #202938;
+    position:sticky;
+    top:0;
+    background:#080b12ee;
+    backdrop-filter:blur(10px);
+    z-index:1000;
 }
 
 .logo{
@@ -36,19 +52,34 @@ header{
     color:#00d4ff;
 }
 
+nav{
+    display:flex;
+    gap:25px;
+}
+
 nav a{
     color:#aaa;
     text-decoration:none;
-    margin-left:25px;
+    transition:.3s;
 }
 
 nav a:hover{
     color:#00d4ff;
 }
 
+/* HERO */
+
 .hero{
-    padding:70px 20px;
+    min-height:65vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     text-align:center;
+    padding:70px 20px;
+}
+
+.hero-content{
+    max-width:800px;
 }
 
 .badge{
@@ -61,7 +92,7 @@ nav a:hover{
 }
 
 h1{
-    font-size:55px;
+    font-size:58px;
     margin-bottom:20px;
 }
 
@@ -71,23 +102,48 @@ h1 span{
 
 .hero p{
     color:#9aa4b2;
-    max-width:650px;
-    margin:auto;
+    font-size:18px;
     line-height:1.7;
+    margin-bottom:30px;
 }
 
-.scanner{
-    padding:60px 8%;
+.btn{
+    background:#00d4ff;
+    color:#001018;
+    padding:15px 28px;
+    border-radius:8px;
+    border:none;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 25px #00d4ff55;
+}
+
+/* GENERAL SECTION */
+
+.section{
+    padding:70px 8%;
     background:#0c1018;
 }
 
-.scanner h2{
-    text-align:center;
-    margin-bottom:35px;
-    font-size:35px;
+.section:nth-child(even){
+    background:#080b12;
 }
 
-.scan-box{
+.section h2{
+    text-align:center;
+    font-size:35px;
+    margin-bottom:40px;
+}
+
+/* BOX */
+
+.tool-box{
     max-width:950px;
     margin:auto;
     background:#111722;
@@ -96,22 +152,98 @@ h1 span{
     padding:30px;
 }
 
-.scan-button{
-    display:block;
-    margin:0 auto 30px;
-    background:#00d4ff;
-    color:#001018;
-    border:0;
-    padding:15px 30px;
-    border-radius:8px;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
+/* GRID */
+
+.grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
 }
 
-.scan-button:hover{
-    transform:translateY(-2px);
+.form-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
 }
+
+/* CARDS */
+
+.card{
+    background:#080b12;
+    border:1px solid #202938;
+    border-radius:12px;
+    padding:22px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    border-color:#00d4ff;
+}
+
+.card h3{
+    color:#00d4ff;
+    font-size:16px;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#aaa;
+    line-height:1.6;
+    word-break:break-word;
+}
+
+/* INPUT */
+
+label{
+    display:block;
+    color:#9aa4b2;
+    margin-bottom:8px;
+}
+
+select{
+    width:100%;
+    padding:13px;
+    background:#080b12;
+    color:white;
+    border:1px solid #303a4d;
+    border-radius:8px;
+    outline:none;
+}
+
+select:focus{
+    border-color:#00d4ff;
+}
+
+.calculate{
+    width:100%;
+    margin-top:25px;
+}
+
+/* RESULT */
+
+.result{
+    margin-top:25px;
+    padding:25px;
+    background:#080b12;
+    border-radius:12px;
+    text-align:center;
+    border:1px solid #202938;
+}
+
+.result h3{
+    color:#00d4ff;
+    margin-bottom:12px;
+}
+
+.result p{
+    color:#ddd;
+    line-height:1.7;
+}
+
+/* SCANNER */
 
 .progress-area{
     display:none;
@@ -143,30 +275,7 @@ h1 span{
     display:none;
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:16px;
-}
-
-.card{
-    background:#080b12;
-    border:1px solid #202938;
-    border-radius:12px;
-    padding:22px;
-}
-
-.card h3{
-    color:#00d4ff;
-    font-size:15px;
-    margin-bottom:12px;
-}
-
-.card p{
-    color:#ddd;
-    line-height:1.5;
-    word-break:break-word;
-}
+/* HEALTH */
 
 .health{
     margin-top:25px;
@@ -182,25 +291,50 @@ h1 span{
     margin-bottom:10px;
 }
 
-footer{
-    padding:25px;
-    text-align:center;
-    color:#6f7886;
+.health p{
+    color:#aaa;
 }
 
+/* FOOTER */
+
+footer{
+    padding:30px;
+    text-align:center;
+    color:#6f7886;
+    border-top:1px solid #202938;
+}
+
+/* MOBILE */
+
 @media(max-width:700px){
-    h1{
-        font-size:40px;
+
+    header{
+        padding:18px 5%;
     }
 
     nav{
         display:none;
     }
+
+    h1{
+        font-size:40px;
+    }
+
+    .hero{
+        min-height:60vh;
+    }
+
 }
+
 </style>
+
 </head>
 
+
 <body>
+
+
+<!-- HEADER -->
 
 <header>
 
@@ -209,112 +343,225 @@ PC<span>Doctor</span>
 </div>
 
 <nav>
+
 <a href="#">Home</a>
-<a href="#scanner">Health Scanner</a>
+
+<a href="#scanner">
+Health Scanner
+</a>
+
+<a href="#fps">
+FPS Calculator
+</a>
+
+<a href="#bottleneck">
+Bottleneck
+</a>
+
+<a href="#speed">
+Speed Test
+</a>
+
+<a href="#troubleshooter">
+Troubleshooter
+</a>
+
 </nav>
 
 </header>
 
 
+<!-- HERO -->
+
 <section class="hero">
 
-<div>
+<div class="hero-content">
 
 <div class="badge">
-🩺 PC Health Scanner
+⚡ Free PC Diagnostic Tools
 </div>
 
 <h1>
-Check Your PC <span>Health</span>
+Check Your PC's <span>Health</span>
 </h1>
 
 <p>
-Run a browser-based system check and view
-available information about your device.
+Diagnose your computer, estimate gaming performance,
+check internet speed and find solutions to common PC problems.
 </p>
+
+<button class="btn"
+onclick="startScan()">
+
+🔍 Start PC Diagnostic
+
+</button>
 
 </div>
 
 </section>
 
 
-<section class="scanner" id="scanner">
+<!-- PC HEALTH SCANNER -->
 
-<h2>🔍 System Scanner</h2>
+<section class="section" id="scanner">
 
-<div class="scan-box">
+<h2>
+🩺 PC Health Scanner
+</h2>
 
-<button class="scan-button" onclick="startScan()">
-🚀 Start Full Scan
+<div class="tool-box">
+
+<button class="btn calculate"
+onclick="startScan()">
+
+🚀 Start Full PC Scan
+
 </button>
 
 
-<div class="progress-area" id="progressArea">
+<div class="progress-area"
+id="progressArea">
 
-<div class="progress-text" id="progressText">
+<div class="progress-text"
+id="progressText">
+
 Preparing scan...
+
 </div>
 
 <div class="progress">
-<div class="progress-bar" id="progressBar"></div>
+
+<div class="progress-bar"
+id="progressBar">
 </div>
 
 </div>
 
+</div>
 
-<div class="results" id="results">
+
+<div class="results"
+id="results">
 
 <div class="grid">
 
-<div class="card">
-<h3>💻 Platform</h3>
-<p id="platform">-</p>
-</div>
 
 <div class="card">
-<h3>🌐 Browser</h3>
-<p id="browser">-</p>
+
+<h3>
+💻 Platform
+</h3>
+
+<p id="platform">
+-
+</p>
+
 </div>
 
-<div class="card">
-<h3>🧠 CPU Threads</h3>
-<p id="threads">-</p>
-</div>
 
 <div class="card">
-<h3>💾 RAM Estimate</h3>
-<p id="memory">-</p>
+
+<h3>
+🌐 Browser
+</h3>
+
+<p id="browser">
+-
+</p>
+
 </div>
 
-<div class="card">
-<h3>🖥️ Screen</h3>
-<p id="screen">-</p>
-</div>
 
 <div class="card">
-<h3>🌍 Language</h3>
-<p id="language">-</p>
+
+<h3>
+🧠 CPU Threads
+</h3>
+
+<p id="threads">
+-
+</p>
+
 </div>
 
-<div class="card">
-<h3>📱 Device Type</h3>
-<p id="device">-</p>
-</div>
 
 <div class="card">
-<h3>🔋 Battery</h3>
-<p id="battery">Checking...</p>
+
+<h3>
+💾 RAM Estimate
+</h3>
+
+<p id="memory">
+-
+</p>
+
 </div>
+
+
+<div class="card">
+
+<h3>
+🖥️ Screen
+</h3>
+
+<p id="screen">
+-
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🌍 Language
+</h3>
+
+<p id="language">
+-
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+📱 Device
+</h3>
+
+<p id="device">
+-
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🔋 Battery
+</h3>
+
+<p id="battery">
+Checking...
+</p>
+
+</div>
+
 
 </div>
 
 
 <div class="health">
 
-<h3>🩺 Scan Status</h3>
+<h3>
+🩺 Scan Status
+</h3>
 
 <p id="healthText">
-Analysis complete.
+Analysis pending...
 </p>
 
 </div>
@@ -326,14 +573,435 @@ Analysis complete.
 </section>
 
 
+<!-- FPS CALCULATOR -->
+
+<section class="section" id="fps">
+
+<h2>
+🎮 FPS Calculator
+</h2>
+
+<div class="tool-box">
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>
+Game
+</label>
+
+<select id="game">
+
+<option value="100">
+Free Fire
+</option>
+
+<option value="90">
+GTA V
+</option>
+
+<option value="75">
+PUBG
+</option>
+
+<option value="65">
+Fortnite
+</option>
+
+<option value="55">
+Red Dead Redemption 2
+</option>
+
+<option value="50">
+Cyberpunk 2077
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+GPU
+</label>
+
+<select id="gpu">
+
+<option value="1.5">
+RTX 4090
+</option>
+
+<option value="1.3">
+RTX 4080
+</option>
+
+<option value="1.15">
+RTX 4070
+</option>
+
+<option value="1">
+RTX 3060
+</option>
+
+<option value="0.75">
+GTX 1660
+</option>
+
+<option value="0.55">
+GTX 1050 Ti
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+CPU
+</label>
+
+<select id="cpu">
+
+<option value="1.2">
+Core i9 / Ryzen 9
+</option>
+
+<option value="1.1">
+Core i7 / Ryzen 7
+</option>
+
+<option value="1">
+Core i5 / Ryzen 5
+</option>
+
+<option value="0.8">
+Core i3 / Ryzen 3
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+Resolution
+</label>
+
+<select id="resolution">
+
+<option value="1">
+1080p
+</option>
+
+<option value="0.75">
+1440p
+</option>
+
+<option value="0.55">
+4K
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+
+<button class="btn calculate"
+onclick="calculateFPS()">
+
+🚀 Calculate FPS
+
+</button>
+
+
+<div class="result"
+id="fpsResult">
+
+<h3>
+Estimated FPS
+</h3>
+
+<p>
+Select your hardware and calculate.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- BOTTLENECK -->
+
+<section class="section" id="bottleneck">
+
+<h2>
+⚙️ Bottleneck Checker
+</h2>
+
+<div class="tool-box">
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>
+CPU Power
+</label>
+
+<select id="cpuPower">
+
+<option value="100">
+High-End CPU
+</option>
+
+<option value="75">
+Mid-Range CPU
+</option>
+
+<option value="50">
+Entry-Level CPU
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+GPU Power
+</label>
+
+<select id="gpuPower">
+
+<option value="100">
+High-End GPU
+</option>
+
+<option value="75">
+Mid-Range GPU
+</option>
+
+<option value="50">
+Entry-Level GPU
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+
+<button class="btn calculate"
+onclick="checkBottleneck()">
+
+🔍 Check Bottleneck
+
+</button>
+
+
+<div class="result"
+id="bottleneckResult">
+
+<h3>
+Bottleneck Result
+</h3>
+
+<p>
+Select CPU and GPU level.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- INTERNET SPEED -->
+
+<section class="section" id="speed">
+
+<h2>
+🌐 Internet Speed Test
+</h2>
+
+<div class="tool-box">
+
+<button class="btn calculate"
+onclick="startSpeedTest()">
+
+🚀 Test Internet Speed
+
+</button>
+
+
+<div class="health">
+
+<h3 id="speedStatus">
+Ready
+</h3>
+
+<p id="speedResult">
+Click the button to test your connection.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TROUBLESHOOTER -->
+
+<section class="section"
+id="troubleshooter">
+
+<h2>
+🛠️ PC Troubleshooter
+</h2>
+
+<div class="tool-box">
+
+
+<div class="grid">
+
+
+<div class="card">
+
+<h3>
+🐌 PC Slow
+</h3>
+
+<p>
+Close unnecessary background apps,
+restart your PC and check available
+storage space.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🎮 Game Lag
+</h3>
+
+<p>
+Update your GPU driver, lower graphics
+settings and check CPU/GPU usage.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🌡️ High Temperature
+</h3>
+
+<p>
+Clean dust from the PC, check airflow
+and make sure cooling is working correctly.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🖥️ No Display
+</h3>
+
+<p>
+Check monitor cable, GPU connection,
+RAM seating and monitor input source.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+💾 Storage Full
+</h3>
+
+<p>
+Remove unnecessary files and keep
+sufficient free space.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+🔵 Blue Screen
+</h3>
+
+<p>
+Update drivers and Windows and check
+recently installed hardware or software.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
 <footer>
+
 © 2026 PC Doctor. All rights reserved.
+
 </footer>
 
 
 <script>
 
+
+/* PC SCANNER */
+
 function startScan(){
+
+    document
+    .getElementById("scanner")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
 
     const progressArea =
         document.getElementById("progressArea");
@@ -348,89 +1016,134 @@ function startScan(){
         document.getElementById("results");
 
     progressArea.style.display="block";
+
     results.style.display="none";
+
+    progressBar.style.width="0%";
 
     let progress=0;
 
     const messages=[
+
         "Checking system...",
+
         "Analyzing browser...",
+
         "Checking CPU information...",
+
         "Checking memory...",
+
         "Checking display...",
+
         "Checking battery...",
+
         "Finalizing report..."
+
     ];
 
     const interval=setInterval(()=>{
 
         progress += 15;
 
-        if(progress > 100){
+        if(progress>100){
             progress=100;
         }
 
-        progressBar.style.width=progress+"%";
+        progressBar.style.width=
+            progress+"%";
 
         let index=Math.min(
             Math.floor(progress/15),
             messages.length-1
         );
 
-        progressText.innerText=messages[index];
+        progressText.innerText=
+            messages[index];
 
         if(progress>=100){
 
             clearInterval(interval);
 
             setTimeout(showResults,500);
+
         }
 
     },350);
+
 }
 
+
+/* SHOW SCAN RESULTS */
 
 async function showResults(){
 
     const nav=navigator;
 
-    document.getElementById("platform").innerText =
+
+    document.getElementById("platform")
+    .innerText =
         nav.platform || "Not available";
 
-    document.getElementById("browser").innerText =
+
+    document.getElementById("browser")
+    .innerText =
         getBrowser();
 
-    document.getElementById("threads").innerText =
+
+    document.getElementById("threads")
+    .innerText =
         nav.hardwareConcurrency
-        ? nav.hardwareConcurrency + " logical threads"
+        ? nav.hardwareConcurrency +
+          " logical threads"
         : "Not available";
 
-    document.getElementById("memory").innerText =
+
+    document.getElementById("memory")
+    .innerText =
         nav.deviceMemory
-        ? nav.deviceMemory + " GB (approx.)"
+        ? nav.deviceMemory +
+          " GB (approx.)"
         : "Not available";
 
-    document.getElementById("screen").innerText =
-        screen.width + " × " + screen.height;
 
-    document.getElementById("language").innerText =
-        nav.language || "Not available";
+    document.getElementById("screen")
+    .innerText =
+        screen.width +
+        " × " +
+        screen.height;
 
-    document.getElementById("device").innerText =
+
+    document.getElementById("language")
+    .innerText =
+        nav.language ||
+        "Not available";
+
+
+    document.getElementById("device")
+    .innerText =
         detectDevice();
+
 
     checkBattery();
 
-    document.getElementById("healthText").innerText =
-        "✅ Scan completed successfully. Review the available system information above.";
 
-    document.getElementById("results").style.display="block";
+    document.getElementById("healthText")
+    .innerText =
+        "✅ Scan completed successfully. Review the information above.";
+
+
+    document.getElementById("results")
+    .style.display="block";
+
 }
 
 
+/* BROWSER */
+
 function getBrowser(){
 
-    const ua=navigator.userAgent;
+    const ua =
+        navigator.userAgent;
 
     if(ua.includes("Edg"))
         return "Microsoft Edge";
@@ -445,22 +1158,29 @@ function getBrowser(){
         return "Safari";
 
     return "Unknown Browser";
+
 }
 
+
+/* DEVICE */
 
 function detectDevice(){
 
-    const width=window.innerWidth;
+    const width =
+        window.innerWidth;
 
-    if(width <= 600)
+    if(width<=600)
         return "Mobile";
 
-    if(width <= 1024)
+    if(width<=1024)
         return "Tablet";
 
     return "Desktop / PC";
+
 }
 
+
+/* BATTERY */
 
 async function checkBattery(){
 
@@ -475,202 +1195,260 @@ async function checkBattery(){
                 await navigator.getBattery();
 
             const percentage =
-                Math.round(battery.level*100);
+                Math.round(
+                    battery.level*100
+                );
 
             batteryElement.innerText =
-                percentage + "% " +
-                (battery.charging
-                ? "⚡ Charging"
-                : "🔋 Not charging");
+                percentage +
+                "% " +
+                (
+                    battery.charging
+                    ? "⚡ Charging"
+                    : "🔋 Not charging"
+                );
 
-        }catch{
+        }
+
+        catch{
 
             batteryElement.innerText =
                 "Not available";
 
         }
 
-    }else{
+    }
+
+    else{
 
         batteryElement.innerText =
-            "Not available in this browser";
+            "Not available";
 
     }
+
 }
 
-</script>
-<!-- INTERNET SPEED TEST -->
 
-<section class="scanner" id="speed">
+/* FPS CALCULATOR */
 
-<h2>🌐 Internet Speed Test</h2>
+function calculateFPS(){
 
-<div class="scan-box">
+    const game =
+        Number(
+            document.getElementById("game")
+            .value
+        );
 
-<button class="scan-button" onclick="startSpeedTest()">
-🚀 Test Internet Speed
-</button>
+    const gpu =
+        Number(
+            document.getElementById("gpu")
+            .value
+        );
 
-<div class="health">
-    <h3 id="speedStatus">Ready</h3>
-    <p id="speedResult">
-        Click the button to test your connection.
-    </p>
-</div>
+    const cpu =
+        Number(
+            document.getElementById("cpu")
+            .value
+        );
 
-</div>
-
-</section>
-
-
-<!-- TROUBLESHOOTER -->
-
-<section class="scanner" id="troubleshooter">
-
-<h2>🛠️ PC Troubleshooter</h2>
-
-<div class="scan-box">
-
-<div class="grid">
-
-<div class="card">
-
-<h3>🐌 PC Slow</h3>
-
-<p>
-Close unnecessary background apps, restart your PC,
-and check available storage space.
-</p>
-
-</div>
+    const resolution =
+        Number(
+            document.getElementById("resolution")
+            .value
+        );
 
 
-<div class="card">
-
-<h3>🎮 Game Lag</h3>
-
-<p>
-Update your GPU driver, lower graphics settings,
-and check CPU/GPU usage.
-</p>
-
-</div>
+    const fps =
+        Math.round(
+            game *
+            gpu *
+            cpu *
+            resolution
+        );
 
 
-<div class="card">
-
-<h3>🌡️ High Temperature</h3>
-
-<p>
-Clean dust from the PC, check airflow and make sure
-CPU/GPU cooling is working correctly.
-</p>
-
-</div>
+    const minimum =
+        Math.round(
+            fps*0.80
+        );
 
 
-<div class="card">
-
-<h3>🖥️ No Display</h3>
-
-<p>
-Check the monitor cable, GPU connection, RAM seating
-and monitor input source.
-</p>
-
-</div>
+    const maximum =
+        Math.round(
+            fps*1.20
+        );
 
 
-<div class="card">
+    document.getElementById("fpsResult")
+    .innerHTML =
 
-<h3>💾 Storage Full</h3>
+    "<h3>🎮 Estimated FPS</h3>" +
 
-<p>
-Remove unnecessary files and keep sufficient free
-space on your system drive.
-</p>
+    "<p>" +
+    minimum +
+    " - " +
+    maximum +
+    " FPS" +
+    "</p>" +
 
-</div>
+    "<p>⚠️ Estimated result only.</p>";
 
-
-<div class="card">
-
-<h3>🔵 Blue Screen</h3>
-
-<p>
-Update drivers and Windows, check recently installed
-hardware/software and review Windows error information.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
+}
 
 
-<script>
+/* BOTTLENECK */
+
+function checkBottleneck(){
+
+    const cpu =
+        Number(
+            document.getElementById("cpuPower")
+            .value
+        );
+
+    const gpu =
+        Number(
+            document.getElementById("gpuPower")
+            .value
+        );
+
+
+    const difference =
+        Math.abs(cpu-gpu);
+
+
+    let result;
+
+
+    if(difference<=10){
+
+        result =
+        "🟢 Balanced CPU/GPU combination.";
+
+    }
+
+    else if(difference<=25){
+
+        result =
+        "🟡 Moderate performance imbalance.";
+
+    }
+
+    else{
+
+        result =
+        "🔴 Significant performance imbalance may exist.";
+
+    }
+
+
+    document.getElementById(
+        "bottleneckResult"
+    ).innerHTML =
+
+    "<h3>⚙️ Result</h3>" +
+
+    "<p>" +
+    result +
+    "</p>";
+
+}
+
+
+/* INTERNET SPEED */
 
 async function startSpeedTest(){
 
     const status =
-        document.getElementById("speedStatus");
+        document.getElementById(
+            "speedStatus"
+        );
 
     const result =
-        document.getElementById("speedResult");
+        document.getElementById(
+            "speedResult"
+        );
 
-    status.innerText="Testing...";
 
-    result.innerText=
-        "Please wait while your browser tests the connection.";
+    status.innerText =
+        "Testing...";
+
+
+    result.innerText =
+        "Please wait...";
+
 
     const testURL =
         "https://speed.cloudflare.com/__down?bytes=10000000";
 
-    const startTime=performance.now();
+
+    const startTime =
+        performance.now();
+
 
     try{
 
-        const response=await fetch(
-            testURL + "?cache=" + Date.now(),
-            {cache:"no-store"}
-        );
+        const response =
+            await fetch(
+                testURL +
+                "?cache=" +
+                Date.now(),
+                {
+                    cache:"no-store"
+                }
+            );
 
-        const data=await response.blob();
 
-        const endTime=performance.now();
+        const data =
+            await response.blob();
 
-        const seconds=
+
+        const endTime =
+            performance.now();
+
+
+        const seconds =
             (endTime-startTime)/1000;
 
-        const bytes=data.size;
 
-        const megabits=
+        const bytes =
+            data.size;
+
+
+        const megabits =
             (bytes*8)/1000000;
 
-        const speed=
+
+        const speed =
             megabits/seconds;
 
-        status.innerText="✅ Test Complete";
 
-        result.innerText=
-            "Approximate download speed: " +
+        status.innerText =
+            "✅ Test Complete";
+
+
+        result.innerText =
+            "Approximate Download Speed: " +
             speed.toFixed(2) +
             " Mbps";
 
-    }catch(error){
+    }
 
-        status.innerText="❌ Test Failed";
+    catch(error){
 
-        result.innerText=
-            "The browser could not complete the speed test. " +
-            "Check your internet connection and try again.";
+        status.innerText =
+            "❌ Test Failed";
+
+
+        result.innerText =
+            "Could not complete the speed test. Try again.";
 
     }
+
 }
 
 </script>
+
+
 </body>
 </html>
