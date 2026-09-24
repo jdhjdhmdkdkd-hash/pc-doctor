@@ -47,12 +47,12 @@ nav a:hover{
 }
 
 .hero{
-    min-height:65vh;
+    min-height:55vh;
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:40px 20px;
+    padding:50px 20px;
 }
 
 .hero-content{
@@ -85,35 +85,33 @@ h1 span{
 }
 
 .btn{
-    display:inline-block;
     background:#00d4ff;
     color:#001018;
-    padding:15px 30px;
+    padding:14px 25px;
     border-radius:8px;
-    text-decoration:none;
-    font-weight:bold;
     border:none;
     cursor:pointer;
+    font-weight:bold;
     font-size:16px;
 }
 
 .btn:hover{
-    box-shadow:0 0 25px #00d4ff55;
     transform:translateY(-2px);
+    box-shadow:0 0 25px #00d4ff55;
 }
 
-.diagnostic{
+.section{
     padding:70px 8%;
     background:#0c1018;
 }
 
-.diagnostic h2{
+.section h2{
     text-align:center;
     font-size:35px;
-    margin-bottom:35px;
+    margin-bottom:40px;
 }
 
-.scan-box{
+.tool-box{
     max-width:900px;
     margin:auto;
     background:#111722;
@@ -122,39 +120,49 @@ h1 span{
     padding:30px;
 }
 
-.status{
-    text-align:center;
-    color:#00d4ff;
-    margin-bottom:25px;
-    font-size:18px;
-}
-
-.info-grid{
+.form-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:15px;
+    gap:20px;
 }
 
-.info-card{
-    background:#0b1018;
-    border:1px solid #202938;
+label{
+    display:block;
+    color:#9aa4b2;
+    margin-bottom:8px;
+}
+
+select{
+    width:100%;
+    padding:13px;
+    background:#080b12;
+    color:white;
+    border:1px solid #303a4d;
+    border-radius:8px;
+}
+
+.calculate{
+    width:100%;
+    margin-top:25px;
+}
+
+.result{
+    margin-top:25px;
+    padding:25px;
+    background:#080b12;
     border-radius:10px;
-    padding:20px;
+    text-align:center;
+    border:1px solid #202938;
 }
 
-.info-card h3{
+.result h3{
     color:#00d4ff;
-    font-size:15px;
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
-.info-card p{
+.result p{
     color:#ddd;
-    word-break:break-word;
-}
-
-.hidden{
-    display:none;
+    line-height:1.7;
 }
 
 footer{
@@ -185,8 +193,8 @@ PC<span>Doctor</span>
 
 <nav>
 <a href="#">Home</a>
-<a href="#diagnostic">Diagnostic</a>
-<a href="#">About</a>
+<a href="#fps">FPS Calculator</a>
+<a href="#bottleneck">Bottleneck</a>
 </nav>
 
 </header>
@@ -197,69 +205,147 @@ PC<span>Doctor</span>
 <div class="hero-content">
 
 <div class="badge">
-⚡ Free PC Diagnostic
+⚡ PC Performance Tools
 </div>
 
 <h1>
-Check Your PC's <span>Health</span>
+Test Your PC <span>Performance</span>
 </h1>
 
 <p>
-Quickly check your computer's available system
-information directly from your browser.
+Estimate gaming FPS and check your CPU/GPU balance
+with PC Doctor.
 </p>
-
-<button class="btn" onclick="startDiagnostic()">
-🔍 Start PC Diagnostic
-</button>
 
 </div>
 
 </section>
 
 
-<section class="diagnostic hidden" id="diagnostic">
+<!-- FPS CALCULATOR -->
 
-<h2>🖥️ PC Diagnostic Results</h2>
+<section class="section" id="fps">
 
-<div class="scan-box">
+<h2>🎮 FPS Calculator</h2>
 
-<div class="status" id="status">
-Scanning your PC...
+<div class="tool-box">
+
+<div class="form-grid">
+
+<div>
+<label>Game</label>
+
+<select id="game">
+<option value="100">Free Fire</option>
+<option value="90">GTA V</option>
+<option value="75">PUBG</option>
+<option value="65">Fortnite</option>
+<option value="55">Red Dead Redemption 2</option>
+<option value="50">Cyberpunk 2077</option>
+</select>
+
 </div>
 
-<div class="info-grid">
 
-<div class="info-card">
-<h3>💻 Operating System</h3>
-<p id="os">Checking...</p>
+<div>
+<label>GPU</label>
+
+<select id="gpu">
+<option value="1.5">RTX 4090</option>
+<option value="1.3">RTX 4080</option>
+<option value="1.15">RTX 4070</option>
+<option value="1">RTX 3060</option>
+<option value="0.75">GTX 1660</option>
+<option value="0.55">GTX 1050 Ti</option>
+</select>
+
 </div>
 
-<div class="info-card">
-<h3>🌐 Browser</h3>
-<p id="browser">Checking...</p>
+
+<div>
+<label>CPU</label>
+
+<select id="cpu">
+<option value="1.2">Core i9 / Ryzen 9</option>
+<option value="1.1">Core i7 / Ryzen 7</option>
+<option value="1">Core i5 / Ryzen 5</option>
+<option value="0.8">Core i3 / Ryzen 3</option>
+</select>
+
 </div>
 
-<div class="info-card">
-<h3>🧠 CPU Cores</h3>
-<p id="cpu">Checking...</p>
+
+<div>
+<label>Resolution</label>
+
+<select id="resolution">
+<option value="1">1080p</option>
+<option value="0.75">1440p</option>
+<option value="0.55">4K</option>
+</select>
+
 </div>
 
-<div class="info-card">
-<h3>💾 RAM</h3>
-<p id="ram">Checking...</p>
 </div>
 
-<div class="info-card">
-<h3>🖥️ Screen</h3>
-<p id="screen">Checking...</p>
+<button class="btn calculate" onclick="calculateFPS()">
+🚀 Calculate FPS
+</button>
+
+<div class="result" id="fpsResult">
+<h3>Estimated FPS</h3>
+<p>Select your hardware and click Calculate FPS.</p>
 </div>
 
-<div class="info-card">
-<h3>🌍 Language</h3>
-<p id="language">Checking...</p>
 </div>
 
+</section>
+
+
+<!-- BOTTLENECK -->
+
+<section class="section" id="bottleneck">
+
+<h2>⚙️ Bottleneck Checker</h2>
+
+<div class="tool-box">
+
+<div class="form-grid">
+
+<div>
+
+<label>CPU Power</label>
+
+<select id="cpuPower">
+<option value="100">High-End CPU</option>
+<option value="75">Mid-Range CPU</option>
+<option value="50">Entry-Level CPU</option>
+</select>
+
+</div>
+
+
+<div>
+
+<label>GPU Power</label>
+
+<select id="gpuPower">
+<option value="100">High-End GPU</option>
+<option value="75">Mid-Range GPU</option>
+<option value="50">Entry-Level GPU</option>
+</select>
+
+</div>
+
+</div>
+
+<button class="btn calculate" onclick="checkBottleneck()">
+🔍 Check Bottleneck
+</button>
+
+<div class="result" id="bottleneckResult">
+<h3>Bottleneck Result</h3>
+<p>Select your CPU and GPU level.</p>
 </div>
 
 </div>
@@ -274,48 +360,78 @@ Scanning your PC...
 
 <script>
 
-function startDiagnostic(){
+function calculateFPS(){
 
-    document.getElementById("diagnostic")
-        .classList.remove("hidden");
+    let game =
+        Number(document.getElementById("game").value);
 
-    document.getElementById("diagnostic")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
+    let gpu =
+        Number(document.getElementById("gpu").value);
 
-    setTimeout(scanPC,1000);
+    let cpu =
+        Number(document.getElementById("cpu").value);
+
+    let resolution =
+        Number(document.getElementById("resolution").value);
+
+    let fps =
+        Math.round(game * gpu * cpu * resolution);
+
+    let minimum =
+        Math.round(fps * 0.80);
+
+    let maximum =
+        Math.round(fps * 1.20);
+
+    document.getElementById("fpsResult").innerHTML =
+
+        "<h3>🎮 Estimated FPS</h3>" +
+
+        "<p>" +
+        minimum +
+        " - " +
+        maximum +
+        " FPS" +
+        "</p>" +
+
+        "<p>⚠️ This is an estimated result.</p>";
 }
 
 
-function scanPC(){
+function checkBottleneck(){
 
-    const nav = navigator;
+    let cpu =
+        Number(document.getElementById("cpuPower").value);
 
-    document.getElementById("os").innerText =
-        nav.platform || "Unknown";
+    let gpu =
+        Number(document.getElementById("gpuPower").value);
 
-    document.getElementById("browser").innerText =
-        nav.userAgent;
+    let difference =
+        Math.abs(cpu - gpu);
 
-    document.getElementById("cpu").innerText =
-        nav.hardwareConcurrency
-        ? nav.hardwareConcurrency + " logical cores"
-        : "Not available";
+    let result;
 
-    document.getElementById("ram").innerText =
-        nav.deviceMemory
-        ? nav.deviceMemory + " GB (approx.)"
-        : "Not available";
+    if(difference <= 10){
 
-    document.getElementById("screen").innerText =
-        screen.width + " × " + screen.height;
+        result =
+        "🟢 Balanced — CPU and GPU are relatively well matched.";
 
-    document.getElementById("language").innerText =
-        nav.language || "Unknown";
+    }else if(difference <= 25){
 
-    document.getElementById("status").innerText =
-        "✅ Scan Complete";
+        result =
+        "🟡 Moderate — There may be some performance imbalance.";
+
+    }else{
+
+        result =
+        "🔴 High — The CPU/GPU combination may have a significant imbalance.";
+
+    }
+
+    document.getElementById("bottleneckResult").innerHTML =
+
+        "<h3>Bottleneck Result</h3>" +
+        "<p>" + result + "</p>";
 
 }
 
